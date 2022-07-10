@@ -17,6 +17,15 @@ export const searchStock = (stockTicker, onComplete) => {
     });
 };
 
-export default {
-  searchStock,
+export const getStockPrice = (stockTicker, onComplete) => {
+  // fetch('http://localhost:6002/price')
+  fetch(`https://finnhub.io/api/v1/quote?symbol=${stockTicker}&token=${API_KEY}`)
+    .then((response) => response.json())
+    .then(({ c: currentPrice, h: high, l: low }) => {
+      onComplete({
+        currentPrice,
+        high,
+        low,
+      });
+    });
 };
