@@ -19,6 +19,15 @@
     {
       "id": 1,
       "symbol": "BTC"
+    },
+    {
+      "symbol": "ETH",
+      "id": 2
+    },
+    {
+      "symbol": "GMT",
+      "id": 3
     }
-  ]
+  ],
+  "personalinfo": []
 }
