@@ -1,7 +1,8 @@
-const API_KEY = process.env.REACT_APP_STOCK_API_KEY;
+const API_KEY = process.env.REACT_APP_STOCK_API_KEY; /* eslint-disable-line no-unused-vars */
 
 export const searchStock = (stockTicker, onComplete) => {
-  fetch(`https://finnhub.io/api/v1/search?q=${stockTicker}&token=${API_KEY}`)
+  fetch('http://localhost:6002/search')
+  // fetch(`https://finnhub.io/api/v1/search?q=${stockTicker}&token=${API_KEY}`)
     .then((response) => response.json())
     .then(({ result }) => {
       if (!result) {

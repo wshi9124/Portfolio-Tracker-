@@ -1,22 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Grid, Menu, Segment, Search, Item, Header, Button,
+  Grid, Menu, Segment, Search, Button,
 } from 'semantic-ui-react';
 import { searchStock } from '../../libs/StockAPI';
+import TopStocks from './TopStocks';
+import BuyStockModal from '../../commonComponents/BuyStockModal';
+
+let searchDebounceTimer;
 
 function Watchlist() {
   const [selectedAsset, setSelectedAsset] = useState({});
   const [assetList, setAssetList] = useState([]);
+  const [assetSymbolDict, setAssetSymbolDict] = useState({});
   const [searchValue, setSearchValue] = useState('');
   const [searchResult, setSearchResult] = useState([]);
+  const [topList, setTopList] = useState([]);
 
   useEffect(() => {
     fetch('http://localhost:6001/watchlist')
       .then((res) => res.json())
       .then((list) => {
-        setAssetList(list);
+        if (list && list.length) {
+          setAssetList(list);
+          setSelectedAsset(list[0]);
 
-        setSelectedAsset(list[0]);
+          list.forEach((item) => {
+            assetSymbolDict[item.symbol] = true;
+          });
+          setAssetSymbolDict({ ...assetSymbolDict });
+        }
+      });
+
+    fetch('http://localhost:6001/topList')
+      .then((res) => res.json())
+      .then((list) => {
+        if (list && list.length) {
+          setTopList(list);
+        }
       });
   }, []);
 
@@ -27,12 +47,63 @@ function Watchlist() {
   const handleSearchChange = (e) => {
     setSearchValue(e.target.value);
 
-    searchStock(e.target.value, (result) => {
-      setSearchResult(result.map((item) => ({
-        title: item.symbol,
-        description: item.name,
-      })));
+    clearTimeout(searchDebounceTimer);
+    searchDebounceTimer = setTimeout(() => {
+      searchStock(e.target.value, (result) => {
+        setSearchResult(result.map((item) => ({
+          title: item.symbol,
+          description: item.name,
+        })));
+      });
+    }, 500);
+  };
+
+  const addToWatchList = (symbol) => {
+    if (assetList.some((item) => item.symbol === symbol)) {
+      return;
+    }
+
+    fetch('http://localhost:6001/watchlist', {
+      method: 'POST',
+      body: JSON.stringify({
+        symbol,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then((response) => response.json())
+      .then((newlyAddedStock) => {
+        setAssetList([...assetList, newlyAddedStock]);
+
+        assetSymbolDict[newlyAddedStock.symbol] = true;
+        setAssetSymbolDict({ ...assetSymbolDict });
+      });
+  };
+
+  const deleteFromWatchList = (symbolId) => {
+    if (!assetList.some((item) => item.id === symbolId)) {
+      return;
+    }
+
+    assetList.forEach((item) => {
+      if (item.id === symbolId) {
+        delete assetSymbolDict[item.symbol];
+        setAssetSymbolDict({ ...assetSymbolDict });
+      }
     });
+    const newAssetsList = assetList.filter((item) => item.id !== symbolId);
+    setAssetList(newAssetsList);
+
+    fetch(`http://localhost:6001/watchlist/${symbolId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    if (newAssetsList.length > 0) {
+      setSelectedAsset(newAssetsList[0]);
+    }
   };
 
   const handleResultSelect = (e, { result }) => {
@@ -41,42 +112,10 @@ function Watchlist() {
       return;
     }
 
-    setAssetList([...assetList, {
-      symbol: result.title,
-    }]);
-
-    fetch('http://localhost:6001/watchlist', {
-      method: 'POST',
-      body: JSON.stringify({
-        symbol: result.title,
-      }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    });
+    addToWatchList(result.title);
 
     setSearchValue('');
   };
-
-  const stockListWithDescriptions = () => (
-    <Item.Group>
-      {assetList.map((stock) => (
-        <Item key={stock.symbol}>
-          <Item.Image size="small" src={stock.image} />
-
-          <Item.Content>
-            <Item.Header as="a">{stock.description}</Item.Header>
-            <Item.Description>
-              <p>{stock.symbol}</p>
-              <p>
-                {stock.price}
-              </p>
-            </Item.Description>
-          </Item.Content>
-        </Item>
-      ))}
-    </Item.Group>
-  );
 
   const searchBarComponent = () => (
     <Search
@@ -91,19 +130,6 @@ function Watchlist() {
 
   return (
     <div>
-      <Header
-        as="h2"
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginTop: '30px',
-        }}
-      >
-        Top: 100 Stocks
-
-      </Header>
-      <div style={{ marginTop: '15px', marginBottom: '15px' }}>{stockListWithDescriptions()}</div>
       <div style={{ margin: '15px' }}>{searchBarComponent()}</div>
       <Grid>
         <Grid.Column width={4}>
@@ -128,13 +154,25 @@ function Watchlist() {
             {selectedAsset.symbol}
           </Segment>
           <div>
-            <Button content="Add to Portfolio" primary />
-            <Button content="Remove from Watchlist" secondary />
+            <BuyStockModal stockSymbol={selectedAsset.symbol ?? ''} />
+            <Button
+              content="Remove from Watchlist"
+              secondary
+              onClick={() => {
+                deleteFromWatchList(selectedAsset.id);
+              }}
+            />
           </div>
         </Grid.Column>
       </Grid>
+      <TopStocks
+        stockList={topList}
+        assetSymbolDict={assetSymbolDict}
+        addToWatchListFunc={(symbolToAdd) => {
+          addToWatchList(symbolToAdd);
+        }}
+      />
     </div>
-
   );
 }
 
