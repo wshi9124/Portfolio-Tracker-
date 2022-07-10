@@ -33,7 +33,11 @@
     {
       "id": 1,
       "firstName": "John",
-      "lasttName": "Doe"
+      "lasttName": "Doe",
+      "cashBalance": 308.3,
+      "address": "123 abc st",
+      "phone": "1231231234",
+      "emailAddress": "hkh@hkh.com"
     }
   ]
 }

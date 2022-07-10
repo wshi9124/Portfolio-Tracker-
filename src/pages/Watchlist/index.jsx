@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import {
-  Grid, Menu, Segment, Search,
+  Grid, Menu, Segment, Search, Item, Header, Button,
 } from 'semantic-ui-react';
+import { searchStock } from '../../libs/StockAPI';
 
-function Watchlist({ marketData }) {
+function Watchlist() {
   const [selectedAsset, setSelectedAsset] = useState({});
   const [assetList, setAssetList] = useState([]);
   const [searchValue, setSearchValue] = useState('');
@@ -27,12 +27,12 @@ function Watchlist({ marketData }) {
   const handleSearchChange = (e) => {
     setSearchValue(e.target.value);
 
-    const searchedItem = marketData.filter((item) => item.base_asset.toLowerCase().includes(e.target.value.toLowerCase()) && item.quote_asset === 'USDT' && item.exchange_id === 'BINANCE');
-
-    setSearchResult(searchedItem.map((item) => ({
-      title: item.base_asset,
-      price: `$${item.price}`,
-    })));
+    searchStock(e.target.value, (result) => {
+      setSearchResult(result.map((item) => ({
+        title: item.symbol,
+        description: item.name,
+      })));
+    });
   };
 
   const handleResultSelect = (e, { result }) => {
@@ -58,6 +58,26 @@ function Watchlist({ marketData }) {
     setSearchValue('');
   };
 
+  const stockListWithDescriptions = () => (
+    <Item.Group>
+      {assetList.map((stock) => (
+        <Item key={stock.symbol}>
+          <Item.Image size="small" src={stock.image} />
+
+          <Item.Content>
+            <Item.Header as="a">{stock.description}</Item.Header>
+            <Item.Description>
+              <p>{stock.symbol}</p>
+              <p>
+                {stock.price}
+              </p>
+            </Item.Description>
+          </Item.Content>
+        </Item>
+      ))}
+    </Item.Group>
+  );
+
   const searchBarComponent = () => (
     <Search
       input={{ icon: 'search', iconPosition: 'left' }}
@@ -71,7 +91,20 @@ function Watchlist({ marketData }) {
 
   return (
     <div>
-      {searchBarComponent()}
+      <Header
+        as="h2"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: '30px',
+        }}
+      >
+        Top: 100 Stocks
+
+      </Header>
+      <div style={{ marginTop: '15px', marginBottom: '15px' }}>{stockListWithDescriptions()}</div>
+      <div style={{ margin: '15px' }}>{searchBarComponent()}</div>
       <Grid>
         <Grid.Column width={4}>
           <Menu fluid vertical tabular>
@@ -94,19 +127,15 @@ function Watchlist({ marketData }) {
             {' '}
             {selectedAsset.symbol}
           </Segment>
+          <div>
+            <Button content="Add to Portfolio" primary />
+            <Button content="Remove from Watchlist" secondary />
+          </div>
         </Grid.Column>
       </Grid>
     </div>
 
   );
 }
-
-Watchlist.propTypes = {
-  marketData: PropTypes.arrayOf(PropTypes.shape({
-    base_asset: PropTypes.string,
-    quote_asset: PropTypes.string,
-    price: PropTypes.number,
-  })).isRequired,
-};
 
 export default Watchlist;

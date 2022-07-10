@@ -8,6 +8,7 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "chart.js": "^3.8.0",
+    "finnhub": "^1.2.14",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-chartjs-2": "^4.2.0",
@@ -23,8 +24,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "postinstall": "semantic-ui-css-patch",
-    "server": "json-server --watch db.json -p 6001",
-    "server-market": "json-server --watch db-market.json -p 6002"
+    "server": "json-server --watch ./db/db.json -p 6001",
+    "server-market": "json-server --watch ./db/db-market.json -p 6002"
   },
   "eslintConfig": {
     "extends": [

@@ -8,7 +8,7 @@ function Settings({ toggleDarkMode }) {
   const [address, setAddress] = useState('');
   const [phone, setPhone] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
-  // const [darkMode, setDarkMode] = useState('');
+  const [cashBalance, setCashBalance] = useState('');
 
   useEffect(() => {
     fetch('http://localhost:6001/personalinfo/1')
@@ -19,6 +19,7 @@ function Settings({ toggleDarkMode }) {
         setAddress(personalData.address ?? '');
         setPhone(personalData.phone ?? '');
         setEmailAddress(personalData.emailAddress ?? '');
+        setCashBalance(personalData.cashBalance.toFixed(2) ?? '');
       });
   }, []);
 
@@ -53,6 +54,7 @@ function Settings({ toggleDarkMode }) {
         </Form.Group>
         <Form.Group widths={2}>
           <Form.Input label="Email Address" placeholder="Email Address" value={emailAddress} onChange={(event) => { setEmailAddress(event.target.value); }} />
+          <Form.Input className="disabled" label="Cash Balance" placeholder="Cash Balance" value={cashBalance} />
         </Form.Group>
         <Button onClick={handleSubmitButton}>Update Information</Button>
       </Form>
