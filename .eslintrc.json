@@ -19,7 +19,20 @@
         "react"
     ],
     "rules": {
-        "max-len": ["error", { "code": 300 }],
-	"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+        "max-len": [
+            "error",
+            {
+                "code": 300
+            }
+        ],
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx"
+                ]
+            }
+        ]
     }
 }
