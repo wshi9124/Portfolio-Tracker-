@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { Button, Form } from 'semantic-ui-react';
+import React, { useEffect, useState } from 'react';
+import { Button, Form, Header } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
-function Settings() {
+function Settings({ toggleDarkMode }) {
   const [firstName, setFirstName] = useState('');
   const [lasttName, setLasttName] = useState('');
   const [address, setAddress] = useState('');
@@ -9,8 +10,19 @@ function Settings() {
   const [emailAddress, setEmailAddress] = useState('');
   // const [darkMode, setDarkMode] = useState('');
 
-  const handleSubmitButton = (event) => {
-    event.preventDefault();
+  useEffect(() => {
+    fetch('http://localhost:6001/personalinfo/1')
+      .then((res) => res.json())
+      .then((personalData) => {
+        setFirstName(personalData.firstName ?? '');
+        setLasttName(personalData.lasttName ?? '');
+        setAddress(personalData.address ?? '');
+        setPhone(personalData.phone ?? '');
+        setEmailAddress(personalData.emailAddress ?? '');
+      });
+  }, []);
+
+  const handleSubmitButton = () => {
     const personalInfo = {
       firstName,
       lasttName,
@@ -18,39 +30,40 @@ function Settings() {
       phone,
       emailAddress,
     };
-    fetch('http://localhost:6001/personalinfo', {
-      method: 'POST',
+    fetch('http://localhost:6001/personalinfo/1', {
+      method: 'PATCH',
       body: JSON.stringify(personalInfo),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
     });
-    event.target.reset();
   };
 
   return (
     <div>
-      General Information:
-      {/* <div>{personalInfo}</div> */}
+      <Header as="h4">General Information:</Header>
       <Form>
         <Form.Group unstackable widths={2}>
-          <Form.Input label="First name" placeholder="First name" name={firstName} onChange={(event) => { setFirstName(event.target.value); }} />
-          <Form.Input label="Last name" placeholder="Last name" name={lasttName} onChange={(event) => { setLasttName(event.target.value); }} />
+          <Form.Input label="First name" placeholder="First name" value={firstName} onChange={(event) => { setFirstName(event.target.value); }} />
+          <Form.Input label="Last name" placeholder="Last name" value={lasttName} onChange={(event) => { setLasttName(event.target.value); }} />
         </Form.Group>
         <Form.Group widths={2}>
-          <Form.Input label="Address" placeholder="Address" name={address} onChange={(event) => { setAddress(event.target.value); }} />
-          <Form.Input label="Phone" placeholder="Phone" name={phone} onChange={(event) => { setPhone(event.target.value); }} />
+          <Form.Input label="Address" placeholder="Address" value={address} onChange={(event) => { setAddress(event.target.value); }} />
+          <Form.Input label="Phone" placeholder="Phone" value={phone} onChange={(event) => { setPhone(event.target.value); }} />
         </Form.Group>
         <Form.Group widths={2}>
-          <Form.Input label="Email Address" placeholder="Email Address" name={emailAddress} onChange={(event) => { setEmailAddress(event.target.value); }} />
-          {/* <Form.Input label="Phone" placeholder="Phone" value={lasttName} onChange={(event)=>{setLasttName(event.target.value)}} /> */}
-          {/* default color mode */}
+          <Form.Input label="Email Address" placeholder="Email Address" value={emailAddress} onChange={(event) => { setEmailAddress(event.target.value); }} />
         </Form.Group>
-        <Form.Checkbox label="I agree to the Terms and Conditions" />
-        <Button type="submit" onSubmit={handleSubmitButton}>Submit</Button>
+        <Button onClick={handleSubmitButton}>Update Information</Button>
       </Form>
+      <Header as="h4">Change Mode:</Header>
+      <Button onClick={() => { toggleDarkMode(); }}>Toggle Dark Mode</Button>
     </div>
   );
 }
+
+Settings.propTypes = {
+  toggleDarkMode: PropTypes.func.isRequired,
+};
 
 export default Settings;

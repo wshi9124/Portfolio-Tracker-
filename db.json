@@ -29,5 +29,11 @@
       "id": 3
     }
   ],
-  "personalinfo": []
+  "personalinfo": [
+    {
+      "id": 1,
+      "firstName": "John",
+      "lasttName": "Doe"
+    }
+  ]
 }

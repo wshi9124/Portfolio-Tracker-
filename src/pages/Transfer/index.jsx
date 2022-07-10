@@ -1,9 +1,10 @@
 import React from 'react';
+import { Header } from 'semantic-ui-react';
 
 function Transfer() {
   return (
     <div>
-      Transfer
+      <Header as="h4">Transfer</Header>
     </div>
   );
 }
