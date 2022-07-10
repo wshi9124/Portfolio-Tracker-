@@ -10,4 +10,8 @@ This will run your backend on port 6001.
 In a new terminal, run npm start.
 Make sure to open http://localhost:6001/ in the browser to verify that your backend is working before you proceed!
 
+Make a copy of .env.example
+Change the file name to .env
+Update REACT_APP_STOCK_API_KEY with the actual key 
+
 ### 
