@@ -1,0 +1,24 @@
+{
+  "portfolio": [
+    {
+      "id": 1,
+      "symbol": "BTC",
+      "shares": 2
+    }
+  ],
+  "transactions": [
+    {
+      "id": 1,
+      "symbol": "BTC",
+      "action": "BUY",
+      "shares": 2,
+      "price": 21000.12
+    }
+  ],
+  "watchlist": [
+    {
+      "id": 1,
+      "symbol": "BTC"
+    }
+  ]
+}

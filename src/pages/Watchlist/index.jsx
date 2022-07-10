@@ -1,46 +1,87 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Menu, Segment } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import {
+  Grid, Menu, Segment, Search,
+} from 'semantic-ui-react';
 
-function Watchlist() {
-  const [selectedStock, setSelectedStock] = useState({});
-  const [stockList, setStockList] = useState([]);
+function Watchlist({ marketData }) {
+  const [selectedAsset, setSelectedAsset] = useState({});
+  const [assetList, setAssetList] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
+  const [searchResult, setSearchResult] = useState([]);
 
   useEffect(() => {
-    const newStockList = [{
-      name: 'Microsoft',
-      ticker: 'MSFT',
-    }, {
-      name: 'Google',
-      ticker: 'GOOG',
-    }, {
-      name: 'Amazon',
-      ticker: 'AMZN',
-    }, {
-      name: 'Apple',
-      ticker: 'APPL',
-    }];
+    fetch('http://localhost:6001/watchlist')
+      .then((res) => res.json())
+      .then((list) => {
+        setAssetList(list);
 
-    setStockList(newStockList);
-
-    setSelectedStock(newStockList[0]);
+        setSelectedAsset(list[0]);
+      });
   }, []);
 
-  const handleStockClick = (stock) => {
-    setSelectedStock(stock);
+  const handleAssetClick = (asset) => {
+    setSelectedAsset(asset);
   };
+
+  const handleSearchChange = (e) => {
+    setSearchValue(e.target.value);
+
+    const searchedItem = marketData.filter((item) => item.base_asset.toLowerCase().includes(e.target.value.toLowerCase()) && item.quote_asset === 'USDT' && item.exchange_id === 'BINANCE');
+
+    setSearchResult(searchedItem.map((item) => ({
+      title: item.base_asset,
+      price: `$${item.price}`,
+    })));
+  };
+
+  const handleResultSelect = (e, { result }) => {
+    if (assetList.some((item) => item.symbol === result.title)) {
+      setSearchValue('');
+      return;
+    }
+
+    setAssetList([...assetList, {
+      symbol: result.title,
+    }]);
+
+    fetch('http://localhost:6001/watchlist', {
+      method: 'POST',
+      body: JSON.stringify({
+        symbol: result.title,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+
+    setSearchValue('');
+  };
+
+  const searchBarComponent = () => (
+    <Search
+      input={{ icon: 'search', iconPosition: 'left' }}
+      placeholder="Search..."
+      onResultSelect={handleResultSelect}
+      onSearchChange={handleSearchChange}
+      results={searchResult}
+      value={searchValue}
+    />
+  );
 
   return (
     <div>
+      {searchBarComponent()}
       <Grid>
         <Grid.Column width={4}>
           <Menu fluid vertical tabular>
-            {stockList.map((stock) => (
+            {assetList.map((asset) => (
               <Menu.Item
-                key={stock.ticker}
-                name={stock.name}
-                active={selectedStock.ticker === stock.ticker}
+                key={asset.symbol}
+                name={asset.symbol}
+                active={selectedAsset.symbol === asset.symbol}
                 onClick={() => {
-                  handleStockClick(stock);
+                  handleAssetClick(asset);
                 }}
               />
             ))}
@@ -51,11 +92,7 @@ function Watchlist() {
           <Segment>
             Selected
             {' '}
-            {selectedStock.name}
-            {' '}
-            with ticker(
-            {selectedStock.ticker}
-            )
+            {selectedAsset.symbol}
           </Segment>
         </Grid.Column>
       </Grid>
@@ -63,5 +100,13 @@ function Watchlist() {
 
   );
 }
+
+Watchlist.propTypes = {
+  marketData: PropTypes.arrayOf(PropTypes.shape({
+    base_asset: PropTypes.string,
+    quote_asset: PropTypes.string,
+    price: PropTypes.number,
+  })).isRequired,
+};
 
 export default Watchlist;
