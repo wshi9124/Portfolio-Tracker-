@@ -5,13 +5,14 @@ import {
 import PropTypes from 'prop-types';
 import { getStockPrice } from '../libs/StockAPI';
 
-function BuyStockModal({ stockSymbol }) {
+function BuyStockModal({ stockSymbol, didBoughtStock }) {
   const [open, setOpen] = useState(false);
   const [buyDisabled, setBuyDisabled] = useState(true);
   const [quantity, setQuantity] = useState(0);
   const [errorMessage, setErrorMessage] = useState('');
   const [cashBalance, setCashBalance] = useState(0);
   const [priceInfo, setPriceInfo] = useState({});
+  const [currentOwnedStock, setCurrentOwnedStock] = useState(null);
 
   useEffect(() => {
     if (!open) {
@@ -19,6 +20,7 @@ function BuyStockModal({ stockSymbol }) {
       setQuantity(0);
       setPriceInfo({});
       setBuyDisabled(true);
+      setCurrentOwnedStock(null);
       return;
     }
 
@@ -29,6 +31,15 @@ function BuyStockModal({ stockSymbol }) {
       });
 
     getStockPrice(stockSymbol, setPriceInfo);
+
+    fetch('http://localhost:6001/portfolio')
+      .then((res) => res.json())
+      .then((stocks) => {
+        const foundStocks = stocks.filter((item) => item.symbol === stockSymbol);
+        if (foundStocks.length > 0) {
+          setCurrentOwnedStock(foundStocks[0]);
+        }
+      });
   }, [open]);
 
   const onQuantityChange = (e) => {
@@ -41,6 +52,43 @@ function BuyStockModal({ stockSymbol }) {
       setErrorMessage('');
       setBuyDisabled(false);
     }
+  };
+
+  const buyStockAction = () => {
+    if (currentOwnedStock !== null) {
+      fetch(`http://localhost:6001/portfolio/${currentOwnedStock.id}`, {
+        method: 'PATCH',
+        body: JSON.stringify({
+          shares: parseFloat(quantity) + parseFloat(currentOwnedStock.shares),
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+        .then((response) => response.json())
+        .then(didBoughtStock);
+    } else {
+      fetch('http://localhost:6001/portfolio', {
+        method: 'POST',
+        body: JSON.stringify({
+          symbol: stockSymbol,
+          shares: parseFloat(quantity),
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+        .then((response) => response.json())
+        .then(didBoughtStock);
+    }
+    fetch('http://localhost:6001/personalinfo/1', {
+      method: 'PATCH',
+      body: JSON.stringify({ cashBalance: (cashBalance - parseFloat(quantity * priceInfo.currentPrice)) }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    setOpen(false);
   };
 
   return (
@@ -64,6 +112,19 @@ function BuyStockModal({ stockSymbol }) {
           Available balance: $
           {cashBalance.toFixed(2)}
         </Header>
+        {currentOwnedStock !== null && (
+          <Header as="h5">
+            Shares owned:
+            {currentOwnedStock.shares}
+          </Header>
+        )}
+        {currentOwnedStock !== null && (
+          <Header as="h5">
+            Total worth:
+            $
+            {(currentOwnedStock.shares * priceInfo.currentPrice).toFixed(2)}
+          </Header>
+        )}
         <Header as="h5">
           Current price:
           {' '}
@@ -97,7 +158,7 @@ function BuyStockModal({ stockSymbol }) {
         <Button color="red" onClick={() => setOpen(false)}>
           Cancel
         </Button>
-        <Button disabled={buyDisabled} color="green" onClick={() => setOpen(false)}>
+        <Button disabled={buyDisabled} color="green" onClick={buyStockAction}>
           Buy!
         </Button>
       </Modal.Actions>
@@ -107,6 +168,11 @@ function BuyStockModal({ stockSymbol }) {
 
 BuyStockModal.propTypes = {
   stockSymbol: PropTypes.string.isRequired,
+  didBoughtStock: PropTypes.func,
+};
+
+BuyStockModal.defaultProps = {
+  didBoughtStock: () => {},
 };
 
 export default BuyStockModal;

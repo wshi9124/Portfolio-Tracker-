@@ -4,7 +4,7 @@
       "id": 1,
       "firstName": "John",
       "lasttName": "Doe",
-      "cashBalance": 308.3,
+      "cashBalance": 912.39,
       "address": "123 abc st",
       "phone": "1231231234",
       "emailAddress": "hkh@hkh.com"
@@ -13,8 +13,18 @@
   "portfolio": [
     {
       "id": 1,
-      "symbol": "APPL",
-      "shares": 2
+      "symbol": "AAPL",
+      "shares": 5
+    },
+    {
+      "symbol": "ABNB",
+      "shares": 3,
+      "id": 2
+    },
+    {
+      "symbol": "ALGN",
+      "shares": 1,
+      "id": 3
     }
   ],
   "transactions": [
@@ -46,6 +56,10 @@
     {
       "symbol": "ADI",
       "id": 5
+    },
+    {
+      "symbol": "ALGN",
+      "id": 6
     }
   ],
   "topList": [
