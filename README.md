@@ -12,6 +12,6 @@ Make sure to open http://localhost:6001/ in the browser to verify that your back
 
 Make a copy of .env.example
 Change the file name to .env
-Update REACT_APP_STOCK_API_KEY with the actual key 
+Update REACT_APP_STOCK_API_KEY_SANDBOX, REACT_APP_STOCK_API_KEY_PROD with the actual key 
 
 ### 

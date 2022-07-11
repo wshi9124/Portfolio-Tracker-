@@ -14,17 +14,7 @@
     {
       "id": 1,
       "symbol": "AAPL",
-      "shares": 1
-    },
-    {
-      "symbol": "ADBE",
-      "shares": 1,
-      "id": 2
-    },
-    {
-      "symbol": "ABNB",
-      "shares": 1,
-      "id": 3
+      "shares": 2
     }
   ],
   "transactions": [
@@ -45,22 +35,6 @@
     {
       "symbol": "AAPL",
       "id": 2
-    },
-    {
-      "symbol": "ADBE",
-      "id": 3
-    },
-    {
-      "symbol": "ATVI",
-      "id": 4
-    },
-    {
-      "symbol": "ADI",
-      "id": 5
-    },
-    {
-      "symbol": "ALGN",
-      "id": 6
     }
   ],
   "topList": [

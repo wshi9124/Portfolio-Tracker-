@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Grid, Menu, Segment, Search, Button,
+  Grid, Menu, Segment, Search, Button, Item,
 } from 'semantic-ui-react';
-import { searchStock } from '../../libs/StockAPI';
+import { searchStock, getStockNews } from '../../libs/StockAPI';
 import TopStocks from './TopStocks';
 import BuyStockModal from '../../commonComponents/BuyStockModal';
 
@@ -15,6 +15,7 @@ function Watchlist() {
   const [searchValue, setSearchValue] = useState('');
   const [searchResult, setSearchResult] = useState([]);
   const [topList, setTopList] = useState([]);
+  const [newsArray, setNewsArray] = useState([]);
 
   useEffect(() => {
     fetch('http://localhost:6001/watchlist')
@@ -39,6 +40,12 @@ function Watchlist() {
         }
       });
   }, []);
+
+  useEffect(() => {
+    getStockNews(selectedAsset.symbol, (newsFromServer) => {
+      setNewsArray(newsFromServer.slice(0, 10));
+    });
+  }, [selectedAsset]);
 
   const handleAssetClick = (asset) => {
     setSelectedAsset(asset);
@@ -133,7 +140,16 @@ function Watchlist() {
       <div style={{ margin: '15px' }}>{searchBarComponent()}</div>
       <Grid>
         <Grid.Column width={4}>
-          <Menu fluid vertical tabular>
+          <Menu
+            fluid
+            vertical
+            tabular
+            style={{
+              height: '300px',
+              overflowX: 'hidden',
+              overflowY: 'auto',
+            }}
+          >
             {assetList.map((asset) => (
               <Menu.Item
                 key={asset.symbol}
@@ -148,11 +164,6 @@ function Watchlist() {
         </Grid.Column>
 
         <Grid.Column stretched width={12}>
-          <Segment>
-            Selected
-            {' '}
-            {selectedAsset.symbol}
-          </Segment>
           <div>
             <BuyStockModal stockSymbol={selectedAsset.symbol ?? ''} />
             <Button
@@ -163,6 +174,25 @@ function Watchlist() {
               }}
             />
           </div>
+          <Segment style={{
+            height: '250px',
+            overflow: 'auto',
+          }}
+          >
+            <Item.Group
+              items={newsArray.map((news) => (
+                {
+                  childKey: news.id,
+                  image: news.image ?? '',
+                  header: news.headline ?? '',
+                  description: news.summary ?? '',
+                  meta: `${news.source} | ${new Date(news.datetime)}`,
+                  extra: news.url ?? '',
+                }
+              ))}
+            />
+
+          </Segment>
         </Grid.Column>
       </Grid>
       <TopStocks

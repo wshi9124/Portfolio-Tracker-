@@ -1,4 +1,4 @@
-const API_KEY = process.env.REACT_APP_STOCK_API_KEY; /* eslint-disable-line no-unused-vars */
+const API_KEY = process.env.REACT_APP_STOCK_API_KEY_SANDBOX; /* eslint-disable-line no-unused-vars */
 
 const useFakeData = true;
 
@@ -31,5 +31,15 @@ export const getStockPrice = (stockTicker, onComplete) => {
         high,
         low,
       });
+    });
+};
+
+export const getStockNews = (stockTicker, onComplete) => {
+  const url = useFakeData ? 'http://localhost:6002/news' : `https://finnhub.io/api/v1/company-news?symbol=${stockTicker}&from=2022-07-01&to=2022-07-10&token=${process.env.REACT_APP_STOCK_API_KEY_PROD}`;
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((newsArray) => {
+      onComplete(newsArray);
     });
 };
