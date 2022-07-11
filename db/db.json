@@ -4,7 +4,7 @@
       "id": 1,
       "firstName": "John",
       "lasttName": "Doe",
-      "cashBalance": 912.39,
+      "cashBalance": 560.5400000000001,
       "address": "123 abc st",
       "phone": "1231231234",
       "emailAddress": "hkh@hkh.com"
@@ -14,15 +14,15 @@
     {
       "id": 1,
       "symbol": "AAPL",
-      "shares": 5
+      "shares": 1
     },
     {
-      "symbol": "ABNB",
-      "shares": 3,
+      "symbol": "ADBE",
+      "shares": 1,
       "id": 2
     },
     {
-      "symbol": "ALGN",
+      "symbol": "ABNB",
       "shares": 1,
       "id": 3
     }
@@ -33,7 +33,8 @@
       "symbol": "AAPL",
       "action": "BUY",
       "shares": 2,
-      "price": 190
+      "price": 190,
+      "timestamp": "time"
     }
   ],
   "watchlist": [
