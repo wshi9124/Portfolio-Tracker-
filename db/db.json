@@ -4,7 +4,7 @@
       "id": 1,
       "firstName": "John",
       "lasttName": "Doe",
-      "cashBalance": 560.5400000000001,
+      "cashBalance": 107.92000000000007,
       "address": "123 abc st",
       "phone": "1231231234",
       "emailAddress": "hkh@hkh.com"
@@ -12,9 +12,16 @@
   ],
   "portfolio": [
     {
-      "id": 1,
       "symbol": "AAPL",
-      "shares": 2
+      "companyName": "Apple Inc.",
+      "shares": 2,
+      "id": 1
+    },
+    {
+      "symbol": "META",
+      "companyName": "Meta Platforms Inc",
+      "shares": 1,
+      "id": 2
     }
   ],
   "transactions": [
@@ -29,12 +36,19 @@
   ],
   "watchlist": [
     {
-      "symbol": "ABNB",
+      "symbol": "AAPL",
+      "companyName": "Apple Inc.",
       "id": 1
     },
     {
-      "symbol": "AAPL",
+      "symbol": "META",
+      "companyName": "Meta Platforms Inc",
       "id": 2
+    },
+    {
+      "symbol": "GOOGL",
+      "companyName": "Alphabet Inc",
+      "id": 3
     }
   ],
   "topList": [

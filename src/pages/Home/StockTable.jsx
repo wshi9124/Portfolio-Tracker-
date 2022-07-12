@@ -13,7 +13,7 @@ function StockTable({ assetList, setAssetList, stockPriceDict }) {
       <Table color="blue" key="blue">
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Symbol</Table.HeaderCell>
+            <Table.HeaderCell>Symbol/Company Name</Table.HeaderCell>
             <Table.HeaderCell>Shares</Table.HeaderCell>
             <Table.HeaderCell>Price per share</Table.HeaderCell>
             <Table.HeaderCell>Total</Table.HeaderCell>
@@ -24,11 +24,11 @@ function StockTable({ assetList, setAssetList, stockPriceDict }) {
         <Table.Body>
           {assetList.map((asset) => (
             <Table.Row key={asset.symbol}>
-              <Table.Cell>{asset.symbol}</Table.Cell>
+              <Table.Cell>{`${asset.symbol}/${asset.companyName}`}</Table.Cell>
               <Table.Cell>{asset.shares}</Table.Cell>
               <Table.Cell>{stockPriceDict[asset.symbol] ? `$${stockPriceDict[asset.symbol].toFixed(2)}` : 'N/A'}</Table.Cell>
               <Table.Cell>{stockPriceDict[asset.symbol] ? `$${(stockPriceDict[asset.symbol] * asset.shares).toFixed(2)}` : 'N/A'}</Table.Cell>
-              <Table.Cell><BuyStockModal stockSymbol={asset.symbol} didBoughtStock={didBoughtStock} /></Table.Cell>
+              <Table.Cell><BuyStockModal stockSymbol={asset.symbol} didBoughtStock={didBoughtStock} companyName={asset.companyName} /></Table.Cell>
               <Table.Cell><Button color="red">Sell</Button></Table.Cell>
             </Table.Row>
           ))}
