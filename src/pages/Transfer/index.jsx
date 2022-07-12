@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Header, Checkbox, Form, Dropdown, Button,
+  Header, Form, Dropdown, Button,
 } from 'semantic-ui-react';
 
 function Transfer() {
@@ -27,6 +27,10 @@ function Transfer() {
     setAmount(0);
   };
 
+  const bankOptions = [{ key: 'chase', text: 'Chase Bank', value: 'chase' },
+    { key: 'bankofamerica', text: 'Bank of America', value: 'bankofamerica' },
+    { key: 'wellsfargo', text: 'Wells Fargo', value: 'wellsfargo' },
+    { key: 'citibank', text: 'Citibank', value: 'citiBank' }];
   return (
     <div>
       <div>
@@ -42,11 +46,7 @@ function Transfer() {
               placeholder="From"
               search
               selection
-              options={[{
-                key: 'chase',
-                text: 'Chase Bank',
-                value: 'chase',
-              }]}
+              options={bankOptions}
             />
           </Form.Field>
           <Form.Field>
@@ -66,13 +66,10 @@ function Transfer() {
             <Header as="h5">Amount:</Header>
             <input placeholder="Amount" type="number" value={amount} onChange={(event) => { setAmount(event.target.value); }} />
           </Form.Field>
-          <Form.Field>
-            <Checkbox label="I agree to the Terms and Conditions" />
-          </Form.Field>
           <Button type="submit" onClick={handleTransferAmount}>Submit</Button>
         </Form>
       </div>
-      <div><Header as="h2">Recent History</Header></div>
+      <div><Header as="h2">Recent Transaction History</Header></div>
     </div>
   );
 }
