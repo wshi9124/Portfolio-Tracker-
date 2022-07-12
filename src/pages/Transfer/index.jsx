@@ -8,7 +8,6 @@ function Transfer() {
   const [amount, setAmount] = useState(0);
   const [transferHistory, setTransferHistory] = useState([]);
   const [selectBank, setSelectBank] = useState('');
-  const [currentTime, setCurrentTime] = useState('');
 
   useEffect(() => {
     fetch('http://localhost:6001/personalinfo/1')
@@ -19,8 +18,6 @@ function Transfer() {
   }, []);
 
   const handleTransferAmount = () => {
-    const timeStamp = Date.now();
-    setCurrentTime(timeStamp);
     setCashBalance(cashBalance + parseFloat(amount));
     fetch('http://localhost:6001/personalinfo/1', {
       method: 'PATCH',
@@ -35,7 +32,7 @@ function Transfer() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ selectBank, amount, currentTime }),
+      body: JSON.stringify({ selectBank, amount, timeStamp: Date.now() }),
     })
       .then((response) => response.json())
       .then((newData) => setTransferHistory([...transferHistory, newData]));
@@ -52,7 +49,8 @@ function Transfer() {
   //   return <li> </li>
   // })
 
-  const bankOptions = [{ key: 'chase', text: 'Chase Bank', value: 'chase' },
+  const bankOptions = [
+    { key: 'chase', text: 'Chase Bank', value: 'chase' },
     { key: 'bankofamerica', text: 'Bank of America', value: 'bankofamerica' },
     { key: 'wellsfargo', text: 'Wells Fargo', value: 'wellsfargo' },
     { key: 'citibank', text: 'Citibank', value: 'citiBank' }];
@@ -73,7 +71,10 @@ function Transfer() {
               search
               selection
               options={bankOptions}
-              onChange={(e) => { setSelectBank(e.target.value); }}
+              value={selectBank}
+              onChange={(e, data) => {
+                setSelectBank(data.value);
+              }}
             />
           </Form.Field>
           <Form.Field>
