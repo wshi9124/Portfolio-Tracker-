@@ -4,6 +4,7 @@ import {
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { getStockPrice } from '../libs/StockAPI';
+import { currencyFormat } from '../libs/Util';
 
 function BuyStockModal({ stockSymbol, companyName, didBoughtStock }) {
   const [open, setOpen] = useState(false);
@@ -110,8 +111,8 @@ function BuyStockModal({ stockSymbol, companyName, didBoughtStock }) {
           would you like to buy?
         </Header>
         <Header as="h5">
-          Available balance: $
-          {cashBalance.toFixed(2)}
+          Available balance:
+          {currencyFormat(cashBalance)}
         </Header>
         {currentOwnedStock !== null && (
           <Header as="h5">
@@ -122,24 +123,23 @@ function BuyStockModal({ stockSymbol, companyName, didBoughtStock }) {
         {currentOwnedStock !== null && (
           <Header as="h5">
             Total worth:
-            $
-            {(currentOwnedStock.shares * priceInfo.currentPrice).toFixed(2)}
+            {currencyFormat((currentOwnedStock.shares * priceInfo.currentPrice))}
           </Header>
         )}
         <Header as="h5">
           Current price:
           {' '}
-          {priceInfo.currentPrice ? `$${priceInfo.currentPrice.toFixed(2)}` : 'N/A'}
+          {priceInfo.currentPrice ? currencyFormat(priceInfo.currentPrice) : 'N/A'}
         </Header>
         <Header as="h5">
           High price of the day:
           {' '}
-          {priceInfo.high ? `$${priceInfo.high.toFixed(2)}` : 'N/A'}
+          {priceInfo.high ? currencyFormat(priceInfo.high) : 'N/A'}
         </Header>
         <Header as="h5">
           Low price of the day:
           {' '}
-          {priceInfo.low ? `$${priceInfo.low.toFixed(2)}` : 'N/A'}
+          {priceInfo.low ? currencyFormat(priceInfo.low) : 'N/A'}
         </Header>
         <Divider />
         <Form>
@@ -151,8 +151,8 @@ function BuyStockModal({ stockSymbol, companyName, didBoughtStock }) {
         </Form>
         <Divider />
         <Header as="h5">
-          Total price: $
-          {quantity > 0 && priceInfo.currentPrice ? (quantity * priceInfo.currentPrice).toFixed(2) : 0}
+          Total price:
+          {quantity > 0 && priceInfo.currentPrice ? currencyFormat((quantity * priceInfo.currentPrice)) : 0}
         </Header>
       </Modal.Content>
       <Modal.Actions>
