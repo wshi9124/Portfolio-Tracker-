@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   Header, Form, Dropdown, Button,
 } from 'semantic-ui-react';
+import { currencyFormat } from '../../libs/Util';
 
 function Transfer() {
   const [cashBalance, setCashBalance] = useState(0);
@@ -60,8 +61,8 @@ function Transfer() {
       <div>
         <Header as="h2">
           Cash Balance:
-          {' $'}
-          {cashBalance.toFixed(2)}
+          {' '}
+          {currencyFormat(cashBalance)}
         </Header>
         <Form>
           <Form.Field>

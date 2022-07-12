@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form, Header } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import { currencyFormat } from '../../libs/Util';
 
 function Settings({ toggleDarkMode }) {
   const [firstName, setFirstName] = useState('');
@@ -54,7 +55,7 @@ function Settings({ toggleDarkMode }) {
         </Form.Group>
         <Form.Group widths={2}>
           <Form.Input label="Email Address" placeholder="Email Address" value={emailAddress} onChange={(event) => { setEmailAddress(event.target.value); }} />
-          <Form.Input className="disabled" label="Cash Balance" placeholder="Cash Balance" value={cashBalance} />
+          <Form.Input className="disabled" label="Cash Balance" placeholder="Cash Balance" value={currencyFormat(cashBalance)} />
         </Form.Group>
         <Button onClick={handleSubmitButton}>Update Information</Button>
       </Form>

@@ -4,6 +4,7 @@ import {
   Chart as ChartJS, ArcElement, Tooltip, Legend,
 } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import { currencyFormat } from '../../libs/Util';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -63,11 +64,10 @@ function DonutChart({ assetList, stockPriceDict }) {
         paddingTop: '1.25rem',
       }}
       >
-        $
-        {assetList.reduce(
+        {currencyFormat(assetList.reduce(
           (previous, current) => previous + (stockPriceDict[current.symbol] * current.shares),
           0,
-        ).toFixed(2)}
+        ))}
       </div>
     </div>
   );
