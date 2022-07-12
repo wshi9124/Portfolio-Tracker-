@@ -4,7 +4,7 @@
       "id": 1,
       "firstName": "John",
       "lasttName": "Doe",
-      "cashBalance": 119955.84,
+      "cashBalance": 119957.84,
       "address": "123 abc st",
       "phone": "1231231234",
       "emailAddress": "fhjdfsdfbdi@gmail.com"
@@ -30,127 +30,7 @@
       "id": 3
     }
   ],
-  "transactions": [
-    {
-      "amount": "10",
-      "currentTime": "",
-      "id": 1
-    },
-    {
-      "amount": "10000",
-      "currentTime": 1657650289092,
-      "id": 2
-    },
-    {
-      "amount": "100",
-      "currentTime": "",
-      "id": 3
-    },
-    {
-      "amount": "10",
-      "currentTime": 1657650337408,
-      "id": 4
-    },
-    {
-      "amount": "1234",
-      "currentTime": 1657650421231,
-      "id": 5
-    },
-    {
-      "amount": 0,
-      "currentTime": 1657650484232,
-      "id": 6
-    },
-    {
-      "amount": 0,
-      "currentTime": 1657650485215,
-      "id": 7
-    },
-    {
-      "amount": 0,
-      "currentTime": 1657650485600,
-      "id": 8
-    },
-    {
-      "amount": 0,
-      "currentTime": 1657650486057,
-      "id": 9
-    },
-    {
-      "amount": 0,
-      "currentTime": 1657650486631,
-      "id": 10
-    },
-    {
-      "amount": "788",
-      "currentTime": 1657650487911,
-      "id": 11
-    },
-    {
-      "selectBank": "",
-      "amount": 0,
-      "currentTime": "",
-      "id": 12
-    },
-    {
-      "selectBank": "",
-      "amount": 0,
-      "currentTime": 1657650628225,
-      "id": 13
-    },
-    {
-      "amount": 0,
-      "currentTime": 1657650629023,
-      "id": 14
-    },
-    {
-      "amount": 0,
-      "currentTime": 1657650656004,
-      "id": 15
-    },
-    {
-      "amount": 0,
-      "currentTime": 1657650868538,
-      "id": 16
-    },
-    {
-      "amount": 0,
-      "currentTime": 1657650897370,
-      "id": 17
-    },
-    {
-      "amount": 0,
-      "currentTime": 1657650920046,
-      "id": 18
-    },
-    {
-      "amount": 0,
-      "currentTime": "",
-      "id": 19
-    },
-    {
-      "amount": "99999",
-      "currentTime": 1657650949637,
-      "id": 20
-    },
-    {
-      "amount": "1000",
-      "currentTime": 1657650969218,
-      "id": 21
-    },
-    {
-      "selectBank": "",
-      "amount": 0,
-      "currentTime": "",
-      "id": 22
-    },
-    {
-      "selectBank": "",
-      "amount": 0,
-      "currentTime": 1657653285334,
-      "id": 23
-    }
-  ],
+  "transactions": [],
   "watchlist": [],
   "topList": [
     {

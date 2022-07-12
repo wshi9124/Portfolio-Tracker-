@@ -6,9 +6,9 @@ import {
 function Transfer() {
   const [cashBalance, setCashBalance] = useState(0);
   const [amount, setAmount] = useState(0);
-  const [transferHistory, setTransferHistory] = useState([])
-  const [selectBank, setSelectBank] = useState('')
-  const [currentTime, setCurrentTime] = useState('')
+  const [transferHistory, setTransferHistory] = useState([]);
+  const [selectBank, setSelectBank] = useState('');
+  const [currentTime, setCurrentTime] = useState('');
 
   useEffect(() => {
     fetch('http://localhost:6001/personalinfo/1')
@@ -17,10 +17,10 @@ function Transfer() {
         setCashBalance(personalData.cashBalance ?? 0);
       });
   }, []);
-  
+
   const handleTransferAmount = () => {
-    let timeStamp = Date.now()
-    setCurrentTime(timeStamp)
+    const timeStamp = Date.now();
+    setCurrentTime(timeStamp);
     setCashBalance(cashBalance + parseFloat(amount));
     fetch('http://localhost:6001/personalinfo/1', {
       method: 'PATCH',
@@ -29,25 +29,23 @@ function Transfer() {
         'Content-type': 'application/json; charset=UTF-8',
       },
     });
-    
-    console.log("1", selectBank, "2", amount, "3", currentTime)
 
     fetch('http://localhost:6001/transactions', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({selectBank, amount, currentTime}),
+      body: JSON.stringify({ selectBank, amount, currentTime }),
     })
-    .then(response => response.json())
-    .then(newData => setTransferHistory([...transferHistory, newData]))
+      .then((response) => response.json())
+      .then((newData) => setTransferHistory([...transferHistory, newData]));
     setAmount(0);
   };
 
   useEffect(() => {
     fetch('http://localhost:6001/transactions')
       .then((res) => res.json())
-      .then((transferData) => setTransferHistory(transferData))
+      .then((transferData) => setTransferHistory(transferData));
   }, []);
 
   // const showBankTransfers= transferHistory.map((transfer) => {
@@ -75,7 +73,7 @@ function Transfer() {
               search
               selection
               options={bankOptions}
-              onChange={(e)=>{setSelectBank(e.target.value)}}
+              onChange={(e) => { setSelectBank(e.target.value); }}
             />
           </Form.Field>
           <Form.Field>
@@ -99,7 +97,7 @@ function Transfer() {
         </Form>
       </div>
       <div><Header as="h2">Recent Transaction History</Header></div>
-            {}
+      { }
     </div>
   );
 }
