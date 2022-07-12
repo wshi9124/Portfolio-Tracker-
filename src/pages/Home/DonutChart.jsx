@@ -67,7 +67,7 @@ function DonutChart({ assetList, stockPriceDict }) {
         {assetList.reduce(
           (previous, current) => previous + (stockPriceDict[current.symbol] * current.shares),
           0,
-        )}
+        ).toFixed(2)}
       </div>
     </div>
   );

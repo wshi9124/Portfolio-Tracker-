@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import { getStockPrice } from '../libs/StockAPI';
 
-function BuyStockModal({ stockSymbol, didBoughtStock }) {
+function BuyStockModal({ stockSymbol, companyName, didBoughtStock }) {
   const [open, setOpen] = useState(false);
   const [buyDisabled, setBuyDisabled] = useState(true);
   const [quantity, setQuantity] = useState(0);
@@ -72,6 +72,7 @@ function BuyStockModal({ stockSymbol, didBoughtStock }) {
         method: 'POST',
         body: JSON.stringify({
           symbol: stockSymbol,
+          companyName,
           shares: parseFloat(quantity),
         }),
         headers: {
@@ -99,7 +100,7 @@ function BuyStockModal({ stockSymbol, didBoughtStock }) {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
     >
-      <Header icon="money" content={`Buy ${stockSymbol}`} />
+      <Header icon="money" content={`Buy ${stockSymbol}/${companyName}`} />
       <Modal.Content>
         <Header as="h4">
           How many
@@ -168,11 +169,12 @@ function BuyStockModal({ stockSymbol, didBoughtStock }) {
 
 BuyStockModal.propTypes = {
   stockSymbol: PropTypes.string.isRequired,
+  companyName: PropTypes.string.isRequired,
   didBoughtStock: PropTypes.func,
 };
 
 BuyStockModal.defaultProps = {
-  didBoughtStock: () => {},
+  didBoughtStock: () => { },
 };
 
 export default BuyStockModal;

@@ -17,6 +17,14 @@ function Watchlist() {
   const [topList, setTopList] = useState([]);
   const [newsArray, setNewsArray] = useState([]);
 
+  // const fetchTop = async () => {
+  //   const res = await fetch('http://localhost:6001/topList');
+  //   const list = await res.json();
+  //   if (list && list.length) {
+  //     setTopList(list);
+  //   }
+  // };
+
   useEffect(() => {
     fetch('http://localhost:6001/watchlist')
       .then((res) => res.json())
@@ -39,6 +47,8 @@ function Watchlist() {
           setTopList(list);
         }
       });
+
+    // fetchTop();
   }, []);
 
   useEffect(() => {
@@ -65,7 +75,7 @@ function Watchlist() {
     }, 500);
   };
 
-  const addToWatchList = (symbol) => {
+  const addToWatchList = (symbol, companyName) => {
     if (assetList.some((item) => item.symbol === symbol)) {
       return;
     }
@@ -74,6 +84,7 @@ function Watchlist() {
       method: 'POST',
       body: JSON.stringify({
         symbol,
+        companyName,
       }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
@@ -119,7 +130,7 @@ function Watchlist() {
       return;
     }
 
-    addToWatchList(result.title);
+    addToWatchList(result.title, result.description);
 
     setSearchValue('');
   };
@@ -153,7 +164,7 @@ function Watchlist() {
             {assetList.map((asset) => (
               <Menu.Item
                 key={asset.symbol}
-                name={asset.symbol}
+                name={`${asset.symbol} (${asset.companyName})`}
                 active={selectedAsset.symbol === asset.symbol}
                 onClick={() => {
                   handleAssetClick(asset);
@@ -165,7 +176,7 @@ function Watchlist() {
 
         <Grid.Column stretched width={12}>
           <div>
-            <BuyStockModal stockSymbol={selectedAsset.symbol ?? ''} />
+            <BuyStockModal stockSymbol={selectedAsset.symbol ?? ''} companyName={selectedAsset.companyName ?? ''} />
             <Button
               content="Remove from Watchlist"
               secondary
@@ -198,8 +209,8 @@ function Watchlist() {
       <TopStocks
         stockList={topList}
         assetSymbolDict={assetSymbolDict}
-        addToWatchListFunc={(symbolToAdd) => {
-          addToWatchList(symbolToAdd);
+        addToWatchListFunc={(symbolToAdd, nameOfCompany) => {
+          addToWatchList(symbolToAdd, nameOfCompany);
         }}
       />
     </div>

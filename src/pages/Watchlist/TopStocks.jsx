@@ -54,7 +54,7 @@ function TopStocks({ stockList, addToWatchListFunc, assetSymbolDict }) {
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Name</Table.HeaderCell>
-            <Table.HeaderCell>Symbol</Table.HeaderCell>
+            <Table.HeaderCell>Symbol/Ticker</Table.HeaderCell>
             <Table.HeaderCell />
           </Table.Row>
         </Table.Header>
@@ -73,7 +73,7 @@ function TopStocks({ stockList, addToWatchListFunc, assetSymbolDict }) {
                       content="Add to watchlist"
                       primary
                       onClick={() => {
-                        addToWatchListFunc(item.symbol);
+                        addToWatchListFunc(item.symbol, item.name);
                       }}
                     />
                   ) : null

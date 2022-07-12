@@ -4,20 +4,22 @@
       "id": 1,
       "firstName": "John",
       "lasttName": "Doe",
-      "cashBalance": 89.10000000000011,
-      "address": "123 abc street",
+      "cashBalance": 107.92000000000007,
+      "address": "123 abc st",
       "phone": "1231231234",
       "emailAddress": "fhjdfsdfbdi@gmail.com"
     }
   ],
   "portfolio": [
     {
-      "id": 1,
       "symbol": "AAPL",
-      "shares": 7
+      "companyName": "Apple Inc.",
+      "shares": 2,
+      "id": 1
     },
     {
-      "symbol": "ADBE",
+      "symbol": "META",
+      "companyName": "Meta Platforms Inc",
       "shares": 1,
       "id": 2
     }
@@ -34,20 +36,19 @@
   ],
   "watchlist": [
     {
-      "symbol": "ABNB",
+      "symbol": "AAPL",
+      "companyName": "Apple Inc.",
       "id": 1
     },
     {
-      "symbol": "AAPL",
+      "symbol": "META",
+      "companyName": "Meta Platforms Inc",
       "id": 2
     },
     {
-      "symbol": "ADBE",
+      "symbol": "GOOGL",
+      "companyName": "Alphabet Inc",
       "id": 3
-    },
-    {
-      "symbol": "AAP",
-      "id": 4
     }
   ],
   "topList": [
