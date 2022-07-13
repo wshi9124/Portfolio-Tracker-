@@ -4,7 +4,7 @@
       "id": 1,
       "firstName": "John",
       "lasttName": "Doe",
-      "cashBalance": 107.92000000000007,
+      "cashBalance": 105538.62,
       "address": "123 abc st",
       "phone": "1231231234",
       "emailAddress": "fhjdfsdfbdi@gmail.com"
@@ -14,7 +14,7 @@
     {
       "symbol": "AAPL",
       "companyName": "Apple Inc.",
-      "shares": 2,
+      "shares": 8,
       "id": 1
     },
     {
@@ -22,35 +22,23 @@
       "companyName": "Meta Platforms Inc",
       "shares": 1,
       "id": 2
+    },
+    {
+      "symbol": "ADBE",
+      "companyName": "Adobe Inc.",
+      "shares": 2,
+      "id": 3
     }
   ],
   "transactions": [
     {
-      "id": 1,
-      "symbol": "AAPL",
-      "action": "BUY",
-      "shares": 2,
-      "price": 190,
-      "timestamp": "time"
-    }
-  ],
-  "watchlist": [
-    {
-      "symbol": "AAPL",
-      "companyName": "Apple Inc.",
+      "selectBank": "wellsfargo",
+      "amount": "1",
+      "timeStamp": 1657666365032,
       "id": 1
-    },
-    {
-      "symbol": "META",
-      "companyName": "Meta Platforms Inc",
-      "id": 2
-    },
-    {
-      "symbol": "GOOGL",
-      "companyName": "Alphabet Inc",
-      "id": 3
     }
   ],
+  "watchlist": [],
   "topList": [
     {
       "symbol": "AAPL",

@@ -96,18 +96,18 @@ function SellStockModal({ stockSymbol, companyName, didBoughtStock }) {
     <Modal
       closeIcon
       open={open}
-      trigger={<Button style={{ backgroundColor: 'red' }} primary>Sell</Button>}
+      trigger={<Button primary>Sell</Button>}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
     >
-      <Header icon="money" content={`Buy ${stockSymbol}/${companyName}`} />
+      <Header icon="money" content={`Sell ${stockSymbol}/${companyName}`} />
       <Modal.Content>
         <Header as="h4">
           How many
           {' '}
           {stockSymbol}
           {' '}
-          would you like to buy?
+          would you like to sell?
         </Header>
         <Header as="h5">
           Available balance: $
@@ -159,8 +159,8 @@ function SellStockModal({ stockSymbol, companyName, didBoughtStock }) {
         <Button color="red" onClick={() => setOpen(false)}>
           Cancel
         </Button>
-        <Button disabled={buyDisabled} color="green" onClick={buyStockAction}>
-          Buy!
+        <Button disabled={buyDisabled} color="orange" onClick={buyStockAction}>
+          Sell!
         </Button>
       </Modal.Actions>
     </Modal>
