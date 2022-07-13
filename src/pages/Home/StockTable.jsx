@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Table, Button } from 'semantic-ui-react';
+import { Table } from 'semantic-ui-react';
 import BuyStockModal from '../../commonComponents/BuyStockModal';
+import SellStockModal from '../../commonComponents/SellStockModal';
 
 function StockTable({ assetList, setAssetList, stockPriceDict }) {
   const didBoughtStock = (stockInfo) => {
@@ -29,7 +30,7 @@ function StockTable({ assetList, setAssetList, stockPriceDict }) {
               <Table.Cell>{stockPriceDict[asset.symbol] ? `$${stockPriceDict[asset.symbol].toFixed(2)}` : 'N/A'}</Table.Cell>
               <Table.Cell>{stockPriceDict[asset.symbol] ? `$${(stockPriceDict[asset.symbol] * asset.shares).toFixed(2)}` : 'N/A'}</Table.Cell>
               <Table.Cell><BuyStockModal stockSymbol={asset.symbol} didBoughtStock={didBoughtStock} companyName={asset.companyName} /></Table.Cell>
-              <Table.Cell><Button color="red">Sell</Button></Table.Cell>
+              <Table.Cell><SellStockModal style={{ backgroundColor: 'red' }} stockSymbol={asset.symbol} didBoughtStock={didBoughtStock} companyName={asset.companyName} /></Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
