@@ -46,17 +46,15 @@ function Transfer() {
       .then((transferData) => setTransferHistory(transferData));
   }, []);
 
-  const showBankTransfers = transferHistory.map((transfer) => {
-    return (
-      <Table.Row key={transfer.id}>
-      <Table.Cell>{transfer.selectBank ?? ""}</Table.Cell>
+  const showBankTransfers = transferHistory.map((transfer) => (
+    <Table.Row key={transfer.id}>
+      <Table.Cell>{transfer.selectBank ?? ''}</Table.Cell>
       <Table.Cell>Transfer</Table.Cell>
-      <Table.Cell>{new Date(transfer.timeStamp).toLocaleString() ?? ""}</Table.Cell>
+      <Table.Cell>{new Date(transfer.timeStamp).toLocaleString() ?? ''}</Table.Cell>
       <Table.Cell>Approved</Table.Cell>
-      <Table.Cell>{currencyFormat(transfer.amount) ?? ""}</Table.Cell>
+      <Table.Cell>{currencyFormat(transfer.amount) ?? ''}</Table.Cell>
     </Table.Row>
-    )
-  })
+  ));
 
   const bankOptions = [
     { key: 'chase', text: 'Chase Bank', value: 'Chase' },
@@ -109,31 +107,31 @@ function Transfer() {
       <div><Header as="h2">Recent Transaction History</Header></div>
       <Table celled>
         <Table.Header>
-        <Table.Row>
-          <Table.HeaderCell>Bank Name</Table.HeaderCell>
-          <Table.HeaderCell>Action</Table.HeaderCell>
-          <Table.HeaderCell>Time</Table.HeaderCell>
-          <Table.HeaderCell>Status</Table.HeaderCell>
-          <Table.HeaderCell>Amount</Table.HeaderCell>
-        </Table.Row>
-      </Table.Header>
-      <Table.Body>
-        {showBankTransfers}
-      </Table.Body>
+          <Table.Row>
+            <Table.HeaderCell>Bank Name</Table.HeaderCell>
+            <Table.HeaderCell>Action</Table.HeaderCell>
+            <Table.HeaderCell>Time</Table.HeaderCell>
+            <Table.HeaderCell>Status</Table.HeaderCell>
+            <Table.HeaderCell>Amount</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+          {showBankTransfers}
+        </Table.Body>
         <Table.Footer>
-      <Table.Row>
-        <Table.HeaderCell></Table.HeaderCell>
-        <Table.HeaderCell></Table.HeaderCell>
-        <Table.HeaderCell></Table.HeaderCell>
-        <Table.HeaderCell></Table.HeaderCell>
-        <Table.HeaderCell>
-          Total Amount: {currencyFormat(transferHistory.reduce(
-            (previous, current) => previous + parseFloat(current.amount), 0,
-          ))}
-        </Table.HeaderCell>
-      </Table.Row>
-    </Table.Footer>
-  </Table>      
+          <Table.Row>
+            <Table.HeaderCell />
+            <Table.HeaderCell />
+            <Table.HeaderCell />
+            <Table.HeaderCell />
+            <Table.HeaderCell>
+              Total Amount:
+              {' '}
+              {currencyFormat(transferHistory.reduce((previous, current) => previous + parseFloat(current.amount), 0))}
+            </Table.HeaderCell>
+          </Table.Row>
+        </Table.Footer>
+      </Table>
     </div>
   );
 }
