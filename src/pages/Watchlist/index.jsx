@@ -137,7 +137,7 @@ function Watchlist() {
 
   const searchBarComponent = () => (
     <Search
-      input={{ icon: 'search', iconPosition: 'left' }}
+      input={{ icon: 'search', iconPosition: 'right' }}
       placeholder="Search..."
       onResultSelect={handleResultSelect}
       onSearchChange={handleSearchChange}
@@ -148,7 +148,7 @@ function Watchlist() {
 
   return (
     <div>
-      <div style={{ margin: '15px' }}>{searchBarComponent()}</div>
+      <div style={{ margin: '.5%' }}>{searchBarComponent()}</div>
       <Grid>
         <Grid.Column width={4}>
           <Menu

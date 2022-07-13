@@ -44,7 +44,8 @@ function TopStocks({ stockList, addToWatchListFunc, assetSymbolDict }) {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          marginTop: '30px',
+          marginTop: '2%',
+          fontSize: '25px',
         }}
       >
         Top 100 Stocks
@@ -53,7 +54,7 @@ function TopStocks({ stockList, addToWatchListFunc, assetSymbolDict }) {
       <Table celled>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>Name</Table.HeaderCell>
+            <Table.HeaderCell style={{ width: '35%' }}>Name</Table.HeaderCell>
             <Table.HeaderCell>Symbol/Ticker</Table.HeaderCell>
             <Table.HeaderCell />
           </Table.Row>

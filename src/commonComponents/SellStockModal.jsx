@@ -100,7 +100,7 @@ function SellStockModal({ stockSymbol, companyName, didBoughtStock }) {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
     >
-      <Header icon="money" content={`Sell ${stockSymbol}/${companyName}`} />
+      <Header icon="money bill alternate outline" content={`Sell ${stockSymbol}/${companyName}`} />
       <Modal.Content>
         <Header as="h4">
           How many
