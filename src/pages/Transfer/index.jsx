@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Header, Form, Dropdown, Button,
+  Header, Form, Dropdown, Button, Table,
 } from 'semantic-ui-react';
 import { currencyFormat } from '../../libs/Util';
 
@@ -46,15 +46,23 @@ function Transfer() {
       .then((transferData) => setTransferHistory(transferData));
   }, []);
 
-  // const showBankTransfers= transferHistory.map((transfer) => {
-  //   return <li> </li>
-  // })
+  const showBankTransfers = transferHistory.map((transfer) => {
+    return (
+      <Table.Row key={transfer.id}>
+      <Table.Cell>{transfer.selectBank ?? ""}</Table.Cell>
+      <Table.Cell>Transfer</Table.Cell>
+      <Table.Cell>{new Date(transfer.timeStamp).toLocaleString() ?? ""}</Table.Cell>
+      <Table.Cell>Approved</Table.Cell>
+      <Table.Cell>{currencyFormat(transfer.amount) ?? ""}</Table.Cell>
+    </Table.Row>
+    )
+  })
 
   const bankOptions = [
-    { key: 'chase', text: 'Chase Bank', value: 'chase' },
-    { key: 'bankofamerica', text: 'Bank of America', value: 'bankofamerica' },
-    { key: 'wellsfargo', text: 'Wells Fargo', value: 'wellsfargo' },
-    { key: 'citibank', text: 'Citibank', value: 'citiBank' }];
+    { key: 'chase', text: 'Chase Bank', value: 'Chase' },
+    { key: 'bankofamerica', text: 'Bank of America', value: 'Bank of America' },
+    { key: 'wellsfargo', text: 'Wells Fargo', value: 'Wells Fargo' },
+    { key: 'citibank', text: 'Citibank', value: 'CitiBank' }];
 
   return (
     <div>
@@ -99,7 +107,33 @@ function Transfer() {
         </Form>
       </div>
       <div><Header as="h2">Recent Transaction History</Header></div>
-      { }
+      <Table celled>
+        <Table.Header>
+        <Table.Row>
+          <Table.HeaderCell>Bank Name</Table.HeaderCell>
+          <Table.HeaderCell>Action</Table.HeaderCell>
+          <Table.HeaderCell>Time</Table.HeaderCell>
+          <Table.HeaderCell>Status</Table.HeaderCell>
+          <Table.HeaderCell>Amount</Table.HeaderCell>
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>
+        {showBankTransfers}
+      </Table.Body>
+        <Table.Footer>
+      <Table.Row>
+        <Table.HeaderCell></Table.HeaderCell>
+        <Table.HeaderCell></Table.HeaderCell>
+        <Table.HeaderCell></Table.HeaderCell>
+        <Table.HeaderCell></Table.HeaderCell>
+        <Table.HeaderCell>
+          Total Amount: {currencyFormat(transferHistory.reduce(
+            (previous, current) => previous + parseFloat(current.amount), 0,
+          ))}
+        </Table.HeaderCell>
+      </Table.Row>
+    </Table.Footer>
+  </Table>      
     </div>
   );
 }
