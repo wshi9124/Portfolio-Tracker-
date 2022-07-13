@@ -42,8 +42,8 @@ function Settings({ toggleDarkMode }) {
   };
 
   return (
-    <div>
-      <Header as="h4">General Information:</Header>
+    <div className="settingDiv">
+      <Header as="h4" style={{ fontSize: '175%' }}>General Information:</Header>
       <Form>
         <Form.Group unstackable widths={2}>
           <Form.Input label="First name" placeholder="First name" value={firstName} onChange={(event) => { setFirstName(event.target.value); }} />
@@ -59,7 +59,7 @@ function Settings({ toggleDarkMode }) {
         </Form.Group>
         <Button onClick={handleSubmitButton}>Update Information</Button>
       </Form>
-      <Header as="h4">Change Mode:</Header>
+      <Header as="h4" style={{ fontSize: '175%' }}>Change Mode:</Header>
       <Button onClick={() => { toggleDarkMode(); }}>Toggle Dark Mode</Button>
     </div>
   );

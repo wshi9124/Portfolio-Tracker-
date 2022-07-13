@@ -3,13 +3,7 @@ import { Header, Icon } from 'semantic-ui-react';
 
 function Logo() {
   return (
-    <div style={{
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginTop: '30px',
-    }}
-    >
+    <div className="logoTitle">
       <Header as="h2">
         <Icon name="chart line" />
         <Header.Content>Portfolio Tracker</Header.Content>

@@ -4,7 +4,7 @@
       "id": 1,
       "firstName": "John",
       "lasttName": "Doe",
-      "cashBalance": 126538.62,
+      "cashBalance": 172208.62,
       "address": "123 abc st",
       "phone": "1231231234",
       "emailAddress": "fhjdfsdfbdi@gmail.com"
@@ -42,6 +42,12 @@
       "amount": "10000",
       "timeStamp": 1657724396390,
       "id": 2
+    },
+    {
+      "selectBank": "Bank of America",
+      "amount": "45670",
+      "timeStamp": 1657741665579,
+      "id": 3
     }
   ],
   "watchlist": [

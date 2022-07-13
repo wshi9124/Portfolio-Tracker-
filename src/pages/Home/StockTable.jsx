@@ -10,7 +10,7 @@ function StockTable({ assetList, setAssetList, stockPriceDict }) {
   };
 
   return (
-    <div>
+    <div className="stockTable">
       <Table color="blue" key="blue">
         <Table.Header>
           <Table.Row>

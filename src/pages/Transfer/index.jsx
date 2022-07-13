@@ -64,7 +64,7 @@ function Transfer() {
 
   return (
     <div>
-      <div>
+      <div className="transferDivs">
         <Header as="h2">
           Cash Balance:
           {' '}
@@ -104,34 +104,36 @@ function Transfer() {
           <Button type="submit" onClick={handleTransferAmount}>Submit</Button>
         </Form>
       </div>
-      <div><Header as="h2">Recent Transaction History</Header></div>
-      <Table celled>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>Bank Name</Table.HeaderCell>
-            <Table.HeaderCell>Action</Table.HeaderCell>
-            <Table.HeaderCell>Time</Table.HeaderCell>
-            <Table.HeaderCell>Status</Table.HeaderCell>
-            <Table.HeaderCell>Amount</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {showBankTransfers}
-        </Table.Body>
-        <Table.Footer>
-          <Table.Row>
-            <Table.HeaderCell />
-            <Table.HeaderCell />
-            <Table.HeaderCell />
-            <Table.HeaderCell />
-            <Table.HeaderCell>
-              Total Amount:
-              {' '}
-              {currencyFormat(transferHistory.reduce((previous, current) => previous + parseFloat(current.amount), 0))}
-            </Table.HeaderCell>
-          </Table.Row>
-        </Table.Footer>
-      </Table>
+      <div className="transferDivs">
+        <div><Header as="h2">Recent Transaction History</Header></div>
+        <Table celled>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>Bank Name</Table.HeaderCell>
+              <Table.HeaderCell>Action</Table.HeaderCell>
+              <Table.HeaderCell>Time</Table.HeaderCell>
+              <Table.HeaderCell>Status</Table.HeaderCell>
+              <Table.HeaderCell>Amount</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            {showBankTransfers}
+          </Table.Body>
+          <Table.Footer>
+            <Table.Row>
+              <Table.HeaderCell />
+              <Table.HeaderCell />
+              <Table.HeaderCell />
+              <Table.HeaderCell />
+              <Table.HeaderCell>
+                Total Amount:
+                {' '}
+                {currencyFormat(transferHistory.reduce((previous, current) => previous + parseFloat(current.amount), 0))}
+              </Table.HeaderCell>
+            </Table.Row>
+          </Table.Footer>
+        </Table>
+      </div>
     </div>
   );
 }

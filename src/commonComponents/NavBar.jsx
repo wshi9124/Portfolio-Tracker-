@@ -7,7 +7,7 @@ function NavBar() {
   const location = useLocation();
 
   return (
-    <Menu pointing secondary>
+    <Menu pointing secondary className="navBar" style={{fontSize:"150%"}}>
       <Menu.Item
         name="home"
         active={location.pathname.split('/')[1] === ''}
