@@ -4,7 +4,7 @@
       "id": 1,
       "firstName": "John",
       "lasttName": "Doe",
-      "cashBalance": 105538.62,
+      "cashBalance": 115538.62,
       "address": "123 abc st",
       "phone": "1231231234",
       "emailAddress": "fhjdfsdfbdi@gmail.com"
@@ -36,6 +36,12 @@
       "amount": "1",
       "timeStamp": 1657666365032,
       "id": 1
+    },
+    {
+      "selectBank": "chase",
+      "amount": "10000",
+      "timeStamp": 1657717504417,
+      "id": 2
     }
   ],
   "watchlist": [],
