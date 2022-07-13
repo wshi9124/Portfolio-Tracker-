@@ -1,6 +1,6 @@
 const API_KEY = process.env.REACT_APP_STOCK_API_KEY_SANDBOX; /* eslint-disable-line no-unused-vars */
 
-const useFakeData = true;
+const useFakeData = false;
 
 export const searchStock = (stockTicker, onComplete) => {
   const url = useFakeData ? 'http://localhost:6002/search' : `https://finnhub.io/api/v1/search?q=${stockTicker}&token=${API_KEY}`;

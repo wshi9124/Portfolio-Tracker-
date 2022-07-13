@@ -44,7 +44,13 @@
       "id": 2
     }
   ],
-  "watchlist": [],
+  "watchlist": [
+    {
+      "symbol": "ABNB",
+      "companyName": "Airbnb, Inc.",
+      "id": 1
+    }
+  ],
   "topList": [
     {
       "symbol": "AAPL",
