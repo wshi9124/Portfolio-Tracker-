@@ -1,0 +1,34 @@
+
+.stockTable{
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 140%;
+}
+
+.transferDivs{
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.settingDiv{
+    padding-top: 1%;
+    padding-right: 1%;
+    padding-left: 1%;
+    padding-bottom: 1%;
+}
+
+.logoTitle{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 2%;
+  }
+
+  .topStockContainer{
+    padding-left: 1%;
+    padding-right: 1%;
+  }
