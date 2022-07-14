@@ -3,40 +3,40 @@ import PropTypes from 'prop-types';
 import { Table, Button } from 'semantic-ui-react';
 import BuyStockModal from '../../commonComponents/BuyStockModal';
 import SellStockModal from '../../commonComponents/SellStockModal';
-import { currencyFormat } from '../../libs/Util'
+import { currencyFormat } from '../../libs/Util';
 
 function StockTable({ assetList, setAssetList, stockPriceDict }) {
   const didBoughtStock = (stockInfo) => {
     setAssetList(assetList.map((stock) => (stock.id === stockInfo.id ? stockInfo : stock)));
   };
 
-  const handleSortByTicker= (stockInfo) => {
-    const tickerSortData= assetList.sort( (a,b) => {
-      if(a.symbol > b.symbol) return 1
-      else if (a.symbol < b.symbol) return -1
-      return 0
-    })
-    setAssetList(tickerSortData.map((stock) => (stock.id === stockInfo.id ? stockInfo : stock)))
-  }
-  
-  const handleSortByHiLow= (stockInfo) => {
-    const priceHiSortData= assetList.sort( (a,b) => {
-      if(a.shares * stockPriceDict[a.symbol] > b.sharesstock * stockPriceDict[b.symbol]) return 1
-      else if (a.shares * stockPriceDict[a.symbol] < b.shares * stockPriceDict[b.symbol]) return -1
-      return 0
-    })
-    priceHiSortData.reverse()
-    setAssetList((priceHiSortData.map((stock) => (stock.id === stockInfo.id ? stockInfo : stock))))
-  }
+  const handleSortByTicker = (stockInfo) => {
+    const tickerSortData = assetList.sort((a, b) => {
+      if (a.symbol > b.symbol) return 1;
+      if (a.symbol < b.symbol) return -1;
+      return 0;
+    });
+    setAssetList(tickerSortData.map((stock) => (stock.id === stockInfo.id ? stockInfo : stock)));
+  };
 
-  const handleSortByLowHi= (stockInfo) => {
-    const priceLowSortData= assetList.sort( (a,b) => {
-      if(a.shares * stockPriceDict[a.symbol] > b.sharesstock * stockPriceDict[b.symbol]) return 1
-      else if (a.shares * stockPriceDict[a.symbol] < b.shares * stockPriceDict[b.symbol]) return -1
-      return 0
-    })
-    setAssetList((priceLowSortData.map((stock) => (stock.id === stockInfo.id ? stockInfo : stock))))
-  }
+  const handleSortByHiLow = (stockInfo) => {
+    const priceHiSortData = assetList.sort((a, b) => {
+      if (a.shares * stockPriceDict[a.symbol] > b.sharesstock * stockPriceDict[b.symbol]) return 1;
+      if (a.shares * stockPriceDict[a.symbol] < b.shares * stockPriceDict[b.symbol]) return -1;
+      return 0;
+    });
+    priceHiSortData.reverse();
+    setAssetList((priceHiSortData.map((stock) => (stock.id === stockInfo.id ? stockInfo : stock))));
+  };
+
+  const handleSortByLowHi = (stockInfo) => {
+    const priceLowSortData = assetList.sort((a, b) => {
+      if (a.shares * stockPriceDict[a.symbol] > b.sharesstock * stockPriceDict[b.symbol]) return 1;
+      if (a.shares * stockPriceDict[a.symbol] < b.shares * stockPriceDict[b.symbol]) return -1;
+      return 0;
+    });
+    setAssetList((priceLowSortData.map((stock) => (stock.id === stockInfo.id ? stockInfo : stock))));
+  };
 
   const didSellStock = (stockInfo) => {
     if (stockInfo.shares === 0) {
