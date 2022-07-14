@@ -95,7 +95,7 @@ function SellStockModal({ stockSymbol, companyName, didSellStock }) {
     <Modal
       closeIcon
       open={open}
-      trigger={<Button primary>Sell</Button>}
+      trigger={<Button primary style={{backgroundColor:'orange'}}>Sell</Button>}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
     >
@@ -154,7 +154,7 @@ function SellStockModal({ stockSymbol, companyName, didSellStock }) {
         </Header>
       </Modal.Content>
       <Modal.Actions>
-        <Button color="red" onClick={() => setOpen(false)}>
+        <Button color="orange" onClick={() => setOpen(false)}>
           Cancel
         </Button>
         <Button disabled={buyDisabled} color="orange" onClick={buyStockAction}>

@@ -47,7 +47,7 @@ function Home() {
 
       <Grid.Row columns={1}>
         <Grid.Column>
-          <Header as="h2">
+          <Header as="h2" style={{marginLeft:'1%'}}>
             Cash Balance:
             {' '}
             {currencyFormat(cashBalance)}

@@ -52,7 +52,7 @@ function LineChart({ assetList, stockPriceDict }) {
     responsive: true,
   };
 
-  const backgroundColor = getRandomColor(0.5);
+  const backgroundColor = 'green';
   const borderColor = backgroundColor.replace('0.5', 1);
 
   const data = {
@@ -77,6 +77,9 @@ function LineChart({ assetList, stockPriceDict }) {
           position: 'absolute',
           top: '50%',
           transform: 'translateY(+50%)',
+          borderRadius: '8%',
+          backgroundColor: 'white',
+          opacity: '.8'
         }}
         options={options}
         data={data}

@@ -138,7 +138,7 @@ function Watchlist() {
   const searchBarComponent = () => (
     <Search
       input={{ icon: 'search' }}
-      placeholder="Search..."
+      placeholder="Search by ticker..."
       onResultSelect={handleResultSelect}
       onSearchChange={handleSearchChange}
       results={searchResult}
@@ -148,7 +148,7 @@ function Watchlist() {
 
   return (
     <div>
-      <div style={{ margin: '.5%' }}>{searchBarComponent()}</div>
+      <div style={{ margin: '1%' }}>{searchBarComponent()}</div>
       <Grid>
         <Grid.Column width={4}>
           <Menu
@@ -159,13 +159,14 @@ function Watchlist() {
               height: '300px',
               overflowX: 'hidden',
               overflowY: 'auto',
+              borderRadius:'3%',
             }}
           >
             {assetList.map((asset) => (
               <Menu.Item
                 key={asset.symbol}
                 name={`${asset.symbol} (${asset.companyName})`}
-                active={selectedAsset.symbol === asset.symbol}
+                active={selectedAsset.symbol === asset.symbol} 
                 onClick={() => {
                   handleAssetClick(asset);
                 }}
@@ -178,16 +179,18 @@ function Watchlist() {
           <div>
             <BuyStockModal stockSymbol={selectedAsset.symbol ?? ''} companyName={selectedAsset.companyName ?? ''} />
             <Button
+            style={{background:'orange'}}
               content="Remove from Watchlist"
               secondary
               onClick={() => {
                 deleteFromWatchList(selectedAsset.id);
-              }}
-            />
+              }}/>
           </div>
           <Segment style={{
             height: '250px',
             overflow: 'auto',
+            background: 'white',
+            opacity:'.9'
           }}
           >
             <Item.Group
