@@ -41,7 +41,7 @@ function Home() {
           <DonutChart assetList={assetList} stockPriceDict={stockPriceDict} />
         </Grid.Column>
         <Grid.Column>
-          <LineChart />
+          <LineChart assetList={assetList} stockPriceDict={stockPriceDict} />
         </Grid.Column>
       </Grid.Row>
 
