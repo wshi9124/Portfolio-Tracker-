@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Table } from 'semantic-ui-react';
+import { Table, Button } from 'semantic-ui-react';
 import BuyStockModal from '../../commonComponents/BuyStockModal';
 import SellStockModal from '../../commonComponents/SellStockModal';
 
@@ -9,6 +9,14 @@ function StockTable({ assetList, setAssetList, stockPriceDict }) {
     setAssetList(assetList.map((stock) => (stock.id === stockInfo.id ? stockInfo : stock)));
   };
 
+// const handleSortbyTicker= () => {
+//   const tickerSortData= assetList.sort( function(a,b) {
+//     if(a>b) return 1
+//     if (a<b) return -1
+//     return 0
+//   })
+//   setAssetList(tickerSortData)
+// }
   const didSellStock = (stockInfo) => {
     if (stockInfo.shares === 0) {
       setAssetList(assetList.filter((stock) => (stock.id !== stockInfo.id)));
@@ -19,6 +27,11 @@ function StockTable({ assetList, setAssetList, stockPriceDict }) {
 
   return (
     <div className="stockTable">
+      <Button.Group size="large">
+        <Button>Sort by Ticker</Button>
+        <Button>Sort by Total (Hi Low)</Button>
+        <Button>Sort by Total (Low Hi)</Button>
+      </Button.Group>
       <Table color="blue" key="blue">
         <Table.Header>
           <Table.Row>
@@ -52,12 +65,7 @@ function StockTable({ assetList, setAssetList, stockPriceDict }) {
         <Table.Footer fullWidth>
           <Table.Row>
             <Table.HeaderCell />
-            <Table.HeaderCell>
-              {assetList.reduce(
-                (previous, current) => previous + current.shares,
-                0,
-              )}
-            </Table.HeaderCell>
+            <Table.HeaderCell />
             <Table.HeaderCell />
             <Table.HeaderCell>
               100 %

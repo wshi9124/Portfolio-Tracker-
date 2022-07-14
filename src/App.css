@@ -21,14 +21,18 @@
     padding-bottom: 1%;
 }
 
-.logoTitle{
+.logoDiv{
     display: flex;
     text-align: center;
     justify-content: center;
-    margin-top: 2%;
+    margin-top: 20px;
   }
 
   .topStockContainer{
     padding-left: 1%;
     padding-right: 1%;
   }
+
+.headerAnimation{
+    font-size: 170%;
+}
