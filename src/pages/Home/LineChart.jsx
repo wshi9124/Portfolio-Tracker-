@@ -11,7 +11,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { getRandomColor } from '../../libs/Util';
 
 ChartJS.register(
   CategoryScale,
@@ -79,7 +78,7 @@ function LineChart({ assetList, stockPriceDict }) {
           transform: 'translateY(+50%)',
           borderRadius: '8%',
           backgroundColor: 'white',
-          opacity: '.8'
+          opacity: '.8',
         }}
         options={options}
         data={data}

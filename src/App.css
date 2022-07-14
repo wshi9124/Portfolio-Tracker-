@@ -30,3 +30,7 @@
 .headerAnimation{
     font-size: 170%;
 }
+
+.ui.vertical.tabular.menu.inverted a.active.item {
+    background: none rgb(113, 107, 107);
+}

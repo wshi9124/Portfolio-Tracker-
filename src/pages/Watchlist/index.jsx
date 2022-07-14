@@ -159,14 +159,14 @@ function Watchlist() {
               height: '300px',
               overflowX: 'hidden',
               overflowY: 'auto',
-              borderRadius:'3%',
+              borderRadius: '3%',
             }}
           >
             {assetList.map((asset) => (
               <Menu.Item
                 key={asset.symbol}
                 name={`${asset.symbol} (${asset.companyName})`}
-                active={selectedAsset.symbol === asset.symbol} 
+                active={selectedAsset.symbol === asset.symbol}
                 onClick={() => {
                   handleAssetClick(asset);
                 }}
@@ -174,38 +174,35 @@ function Watchlist() {
             ))}
           </Menu>
         </Grid.Column>
-
         <Grid.Column stretched width={12}>
           <div>
             <BuyStockModal stockSymbol={selectedAsset.symbol ?? ''} companyName={selectedAsset.companyName ?? ''} />
             <Button
-            style={{background:'orange'}}
+              style={{ background: 'orange' }}
               content="Remove from Watchlist"
               secondary
               onClick={() => {
                 deleteFromWatchList(selectedAsset.id);
-              }}/>
+              }}
+            />
           </div>
           <Segment style={{
             height: '250px',
             overflow: 'auto',
             background: 'white',
-            opacity:'.9'
+            opacity: '.9',
           }}
           >
             <Item.Group
-              items={newsArray.map((news) => (
-                {
-                  childKey: news.id,
-                  image: news.image ?? '',
-                  header: news.headline ?? '',
-                  description: news.summary ?? '',
-                  meta: `${news.source} | ${new Date(news.datetime)}`,
-                  extra: news.url ?? '',
-                }
-              ))}
+              items={newsArray.map((news) => ({
+                childKey: news.id,
+                image: news.image ?? '',
+                header: news.headline ?? '',
+                description: news.summary ?? '',
+                meta: `${news.source} | ${new Date(news.datetime * 1000)}`,
+                extra: <a target="__blank" href={news.url}>{news.url}</a>,
+              }))}
             />
-
           </Segment>
         </Grid.Column>
       </Grid>

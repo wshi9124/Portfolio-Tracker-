@@ -35,7 +35,7 @@ export const getStockPrice = (stockTicker, onComplete) => {
 };
 
 export const getStockNews = (stockTicker, onComplete) => {
-  const url = useFakeData ? 'http://localhost:6002/news' : `https://finnhub.io/api/v1/company-news?symbol=${stockTicker}&from=2022-07-01&to=2022-07-10&token=${process.env.REACT_APP_STOCK_API_KEY_PROD}`;
+  const url = useFakeData ? 'http://localhost:6002/news' : `https://finnhub.io/api/v1/company-news?symbol=${stockTicker}&from=2022-07-09&to=2022-07-15&token=${process.env.REACT_APP_STOCK_API_KEY_PROD}`;
 
   fetch(url)
     .then((response) => response.json())

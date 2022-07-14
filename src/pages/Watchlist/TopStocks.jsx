@@ -51,8 +51,8 @@ function TopStocks({ stockList, addToWatchListFunc, assetSymbolDict }) {
         Top 100 Stocks
 
       </Header>
-      <Table celled style={{ marginLeft: '.75%' }}>
-          <Table.Header> 
+      <Table celled style={{ marginLeft: '1.3%', width: '97%' }}>
+        <Table.Header>
           <Table.Row>
             <Table.HeaderCell style={{ width: '35%' }}>Name</Table.HeaderCell>
             <Table.HeaderCell>Symbol/Ticker</Table.HeaderCell>
@@ -86,7 +86,7 @@ function TopStocks({ stockList, addToWatchListFunc, assetSymbolDict }) {
 
         <Table.Footer>
           <Table.Row>
-            <Table.HeaderCell colSpan="3" style={{textAlign:'center'}}>
+            <Table.HeaderCell colSpan="3" style={{ textAlign: 'center' }}>
               <Menu pagination>
                 {currentPage !== 1 && (
                   <Menu.Item as="a" icon onClick={goBack}>

@@ -97,7 +97,7 @@ function BuyStockModal({ stockSymbol, companyName, didBoughtStock }) {
     <Modal
       closeIcon
       open={open}
-      trigger={<Button primary style={{backgroundColor:'green'}}>Buy</Button>}
+      trigger={<Button primary style={{ backgroundColor: 'green' }}>Buy</Button>}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
     >
