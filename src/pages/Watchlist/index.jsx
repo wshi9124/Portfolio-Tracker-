@@ -174,7 +174,6 @@ function Watchlist() {
             ))}
           </Menu>
         </Grid.Column>
-
         <Grid.Column stretched width={12}>
           <div>
             <BuyStockModal stockSymbol={selectedAsset.symbol ?? ''} companyName={selectedAsset.companyName ?? ''} />
@@ -195,18 +194,15 @@ function Watchlist() {
           }}
           >
             <Item.Group
-              items={newsArray.map((news) => (
-                {
-                  childKey: news.id,
-                  image: news.image ?? '',
-                  header: news.headline ?? '',
-                  description: news.summary ?? '',
-                  meta: `${news.source} | ${new Date(news.datetime)}`,
-                  extra: news.url ?? '',
-                }
-              ))}
+              items={newsArray.map((news) => ({
+                childKey: news.id,
+                image: news.image ?? '',
+                header: news.headline ?? '',
+                description: news.summary ?? '',
+                meta: `${news.source} | ${new Date(news.datetime * 1000)}`,
+                extra: <a target="__blank" href={news.url}>{news.url}</a>,
+              }))}
             />
-
           </Segment>
         </Grid.Column>
       </Grid>
