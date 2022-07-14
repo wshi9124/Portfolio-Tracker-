@@ -91,7 +91,7 @@ function StockTable({ assetList, setAssetList, stockPriceDict }) {
             <Table.HeaderCell>
               100 %
             </Table.HeaderCell>
-            <Table.HeaderCell style={{fontWeight:'bold'}}>
+            <Table.HeaderCell style={{ fontWeight: 'bold' }}>
               {Number.isNaN(assetList.reduce(
                 (previous, current) => previous + (stockPriceDict[current.symbol] * current.shares),
                 0,

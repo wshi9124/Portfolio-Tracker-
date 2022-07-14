@@ -40,7 +40,7 @@ function DonutChart({ assetList, stockPriceDict }) {
 
   return (
     <div>
-      <Doughnut data={data} style={{backgroundColor:`white`, opacity:'.8', borderRadius:'8%'}}/>
+      <Doughnut data={data} style={{ backgroundColor: 'white', opacity: '.8', borderRadius: '8%' }} />
       <div style={{
         position: 'absolute',
         top: '0px',
@@ -57,12 +57,11 @@ function DonutChart({ assetList, stockPriceDict }) {
         fontWeight: 'bolder',
         color: '#357EC7',
         textAlign: 'center',
-        fontSize: '150%',
       }}
       >
         Total Stock Value:
         <br />
-         {currencyFormat(assetList.reduce(
+        {currencyFormat(assetList.reduce(
           (previous, current) => previous + (stockPriceDict[current.symbol] * current.shares),
           0,
         ))}

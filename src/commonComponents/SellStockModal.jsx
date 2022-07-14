@@ -4,7 +4,7 @@ import {
 } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { getStockPrice } from '../libs/StockAPI';
-import { currencyFormat } from '.././libs/Util'
+import { currencyFormat } from '../libs/Util';
 
 function SellStockModal({ stockSymbol, companyName, didSellStock }) {
   const [open, setOpen] = useState(false);
@@ -95,7 +95,7 @@ function SellStockModal({ stockSymbol, companyName, didSellStock }) {
     <Modal
       closeIcon
       open={open}
-      trigger={<Button primary style={{backgroundColor:'orange'}}>Sell</Button>}
+      trigger={<Button primary style={{ backgroundColor: 'orange' }}>Sell</Button>}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
     >
@@ -110,7 +110,7 @@ function SellStockModal({ stockSymbol, companyName, didSellStock }) {
         </Header>
         <Header as="h5">
           Available balance:
-           {currencyFormat(cashBalance)}
+          {currencyFormat(cashBalance)}
         </Header>
         {currentOwnedStock !== null && (
           <Header as="h5">
