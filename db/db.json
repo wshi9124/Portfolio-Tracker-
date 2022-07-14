@@ -4,7 +4,7 @@
       "id": 1,
       "firstName": "John",
       "lasttName": "Doe",
-      "cashBalance": 175804.49,
+      "cashBalance": 11265.46999999998,
       "address": "123 abc st",
       "phone": "1231231234",
       "emailAddress": "123@gmail.com"
@@ -12,16 +12,40 @@
   ],
   "portfolio": [
     {
-      "symbol": "META",
-      "companyName": "Meta Platforms Inc",
-      "shares": 1,
-      "id": 2
-    },
-    {
       "symbol": "AAPL",
       "companyName": "Apple Inc.",
-      "shares": 1,
+      "shares": 501,
       "id": 3
+    },
+    {
+      "symbol": "ABNB",
+      "companyName": "Airbnb, Inc.",
+      "shares": 100,
+      "id": 4
+    },
+    {
+      "symbol": "ADBE",
+      "companyName": "Adobe Inc.",
+      "shares": 200,
+      "id": 5
+    },
+    {
+      "symbol": "EBAY",
+      "companyName": "eBay Inc.",
+      "shares": 10,
+      "id": 6
+    },
+    {
+      "symbol": "PDD",
+      "companyName": "Pinduoduo Inc.",
+      "shares": 20,
+      "id": 7
+    },
+    {
+      "symbol": "AMGN",
+      "companyName": "Amgen Inc.",
+      "shares": 10,
+      "id": 8
     }
   ],
   "transactions": [
@@ -47,13 +71,38 @@
   "watchlist": [
     {
       "symbol": "AAPL",
-      "companyName": "Apple Inc.",
+      "companyName": "Apple Inc",
       "id": 1
+    },
+    {
+      "symbol": "META",
+      "companyName": "Meta Platforms Inc",
+      "id": 2
+    },
+    {
+      "symbol": "ABNB",
+      "companyName": "Airbnb, Inc.",
+      "id": 3
     },
     {
       "symbol": "ADBE",
       "companyName": "Adobe Inc.",
-      "id": 2
+      "id": 4
+    },
+    {
+      "symbol": "EBAY",
+      "companyName": "eBay Inc.",
+      "id": 5
+    },
+    {
+      "symbol": "PDD",
+      "companyName": "Pinduoduo Inc.",
+      "id": 6
+    },
+    {
+      "symbol": "AMGN",
+      "companyName": "Amgen Inc.",
+      "id": 7
     }
   ],
   "topList": [
