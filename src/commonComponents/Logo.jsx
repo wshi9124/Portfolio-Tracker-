@@ -3,10 +3,10 @@ import { Header, Icon } from 'semantic-ui-react';
 
 function Logo() {
   return (
-    <div className="logoTitle">
+    <div className="logoDiv">
       <Header as="h2">
-        <Icon name="chart line" />
-        <Header.Content>Portfolio Tracker</Header.Content>
+        <Icon name="chart line" style={{ fontSize: '170%' }} />
+        <Header.Content className="headerAnimation">Portfolio Tracker</Header.Content>
       </Header>
     </div>
   );

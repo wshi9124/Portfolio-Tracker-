@@ -46,7 +46,7 @@ function Transfer() {
       .then((transferData) => setTransferHistory(transferData));
   }, []);
 
-  const showBankTransfers = transferHistory.map((transfer) => (
+  const showBankTransfers = [...transferHistory].reverse().map((transfer) => (
     <Table.Row key={transfer.id}>
       <Table.Cell>{transfer.selectBank ?? ''}</Table.Cell>
       <Table.Cell>Transfer</Table.Cell>
