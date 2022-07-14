@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Header } from 'semantic-ui-react';
 import DonutChart from './DonutChart';
 import StockTable from './StockTable';
 import LineChart from './LineChart';
 import { getStockPrice } from '../../libs/StockAPI';
+import { currencyFormat } from '../../libs/Util';
 
 function Home() {
+  const [cashBalance, setCashBalance] = useState(0);
   const [assetList, setAssetList] = useState([]);
   const [stockPriceDict, setStockPriceDict] = useState({});
 
@@ -24,6 +26,12 @@ function Home() {
         });
       }
     });
+
+    fetch('http://localhost:6001/personalinfo/1')
+      .then((res) => res.json())
+      .then((personalData) => {
+        setCashBalance(personalData.cashBalance ?? 0);
+      });
   }, [assetList]);
 
   return (
@@ -39,6 +47,11 @@ function Home() {
 
       <Grid.Row columns={1}>
         <Grid.Column>
+          <Header as="h2">
+            Cash Balance:
+            {' '}
+            {currencyFormat(cashBalance)}
+          </Header>
           <StockTable assetList={assetList} setAssetList={setAssetList} stockPriceDict={stockPriceDict} />
         </Grid.Column>
       </Grid.Row>
