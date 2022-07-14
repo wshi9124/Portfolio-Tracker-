@@ -137,7 +137,7 @@ function Watchlist() {
 
   const searchBarComponent = () => (
     <Search
-      input={{ icon: 'search', iconPosition: 'right' }}
+      input={{ icon: 'search' }}
       placeholder="Search..."
       onResultSelect={handleResultSelect}
       onSearchChange={handleSearchChange}

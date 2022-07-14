@@ -4,17 +4,9 @@ import {
   Chart as ChartJS, ArcElement, Tooltip, Legend,
 } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import { currencyFormat } from '../../libs/Util';
+import { currencyFormat, getRandomColor } from '../../libs/Util';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-
-const getRandomColor = (alpha) => {
-  let color = 'rgba(';
-  for (let i = 0; i < 3; i += 1) {
-    color = `${color}${Math.floor(Math.random() * 256)}, `;
-  }
-  return `${color}${alpha})`;
-};
 
 const getColors = (numberOfColors) => {
   const backgroundColor = [];

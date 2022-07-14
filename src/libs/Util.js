@@ -7,7 +7,16 @@ export const currencyFormat = (x) => {
   return `$${result}`;
 };
 
+export const getRandomColor = (alpha = 1) => {
+  let color = 'rgba(';
+  for (let i = 0; i < 3; i += 1) {
+    color = `${color}${Math.floor(Math.random() * 256)}, `;
+  }
+  return `${color}${alpha})`;
+};
+
 export default {
   currencyFormat,
+  getRandomColor,
 };
 // currency coverter keep this for future

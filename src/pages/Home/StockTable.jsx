@@ -17,6 +17,13 @@ function StockTable({ assetList, setAssetList, stockPriceDict }) {
 //   })
 //   setAssetList(tickerSortData)
 // }
+  const didSellStock = (stockInfo) => {
+    if (stockInfo.shares === 0) {
+      setAssetList(assetList.filter((stock) => (stock.id !== stockInfo.id)));
+    } else {
+      setAssetList(assetList.map((stock) => (stock.id === stockInfo.id ? stockInfo : stock)));
+    }
+  };
 
   return (
     <div className="stockTable">
@@ -49,7 +56,7 @@ function StockTable({ assetList, setAssetList, stockPriceDict }) {
               <Table.Cell>{stockPriceDict[asset.symbol] ? `$${(stockPriceDict[asset.symbol] * asset.shares).toFixed(2)}` : 'N/A'}</Table.Cell>
               <Table.Cell><BuyStockModal stockSymbol={asset.symbol} didBoughtStock={didBoughtStock} companyName={asset.companyName} /></Table.Cell>
               <Table.Cell>
-                <SellStockModal stockSymbol={asset.symbol} didBoughtStock={didBoughtStock} companyName={asset.companyName} />
+                <SellStockModal stockSymbol={asset.symbol ?? ''} didSellStock={didSellStock} companyName={asset.companyName ?? ''} />
                 {' '}
               </Table.Cell>
             </Table.Row>
