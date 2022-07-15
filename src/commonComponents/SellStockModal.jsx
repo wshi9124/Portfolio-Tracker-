@@ -154,7 +154,7 @@ function SellStockModal({ stockSymbol, companyName, didSellStock }) {
         </Header>
       </Modal.Content>
       <Modal.Actions>
-        <Button color="orange" onClick={() => setOpen(false)}>
+        <Button color="grey" onClick={() => setOpen(false)}>
           Cancel
         </Button>
         <Button disabled={buyDisabled} color="orange" onClick={buyStockAction}>

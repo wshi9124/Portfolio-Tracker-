@@ -2,131 +2,17 @@
   "personalinfo": [
     {
       "id": 1,
-      "firstName": "John",
-      "lasttName": "Doe",
-      "cashBalance": 221255.46999999997,
-      "address": "123 abc st",
-      "phone": "1231231234",
-      "emailAddress": "123@gmail.com"
+      "firstName": "",
+      "lasttName": "",
+      "cashBalance": 0,
+      "address": "",
+      "phone": "",
+      "emailAddress": ""
     }
   ],
-  "portfolio": [
-    {
-      "symbol": "AAPL",
-      "companyName": "Apple Inc.",
-      "shares": 501,
-      "id": 3
-    },
-    {
-      "symbol": "ABNB",
-      "companyName": "Airbnb, Inc.",
-      "shares": 100,
-      "id": 4
-    },
-    {
-      "symbol": "ADBE",
-      "companyName": "Adobe Inc.",
-      "shares": 200,
-      "id": 5
-    },
-    {
-      "symbol": "EBAY",
-      "companyName": "eBay Inc.",
-      "shares": 10,
-      "id": 6
-    },
-    {
-      "symbol": "PDD",
-      "companyName": "Pinduoduo Inc.",
-      "shares": 20,
-      "id": 7
-    },
-    {
-      "symbol": "AMGN",
-      "companyName": "Amgen Inc.",
-      "shares": 10,
-      "id": 8
-    }
-  ],
-  "transactions": [
-    {
-      "selectBank": "Bank of America",
-      "amount": "1000",
-      "timeStamp": 1657723812370,
-      "id": 1
-    },
-    {
-      "selectBank": "Wells Fargo",
-      "amount": "10000",
-      "timeStamp": 1657724396390,
-      "id": 2
-    },
-    {
-      "selectBank": "Bank of America",
-      "amount": "45670",
-      "timeStamp": 1657741665579,
-      "id": 3
-    },
-    {
-      "selectBank": "Bank of America",
-      "amount": "10000",
-      "timeStamp": 1657821478624,
-      "id": 4
-    },
-    {
-      "selectBank": "Bank of America",
-      "amount": "199990",
-      "timeStamp": 1657821486607,
-      "id": 5
-    }
-  ],
-  "watchlist": [
-    {
-      "symbol": "ADSK",
-      "companyName": "Autodesk, Inc.",
-      "id": 3
-    },
-    {
-      "symbol": "ABNB",
-      "companyName": "Airbnb, Inc.",
-      "id": 4
-    },
-    {
-      "symbol": "ADBE",
-      "companyName": "Adobe Inc.",
-      "id": 5
-    },
-    {
-      "symbol": "ADI",
-      "companyName": "Analog Devices, Inc.",
-      "id": 6
-    },
-    {
-      "symbol": "CSX",
-      "companyName": "CSX Corporation",
-      "id": 7
-    },
-    {
-      "symbol": "NTES",
-      "companyName": "NetEase, Inc.",
-      "id": 8
-    },
-    {
-      "symbol": "MSFT",
-      "companyName": "Microsoft Corporation",
-      "id": 9
-    },
-    {
-      "symbol": "ZS",
-      "companyName": "Zscaler, Inc.",
-      "id": 10
-    },
-    {
-      "symbol": "TXN",
-      "companyName": "Texas Instruments Incorporated",
-      "id": 11
-    }
-  ],
+  "portfolio": [],
+  "transactions": [],
+  "watchlist": [],
   "topList": [
     {
       "symbol": "AAPL",
