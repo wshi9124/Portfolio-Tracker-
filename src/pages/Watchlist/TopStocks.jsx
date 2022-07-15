@@ -52,7 +52,7 @@ function TopStocks({ stockList, addToWatchListFunc, assetSymbolDict }) {
 
       </Header>
       <Table celled style={{ marginLeft: '1.3%', width: '97%' }}>
-        <Table.Header>
+          <Table.Header> 
           <Table.Row>
             <Table.HeaderCell style={{ width: '35%' }}>Name</Table.HeaderCell>
             <Table.HeaderCell>Symbol/Ticker</Table.HeaderCell>
