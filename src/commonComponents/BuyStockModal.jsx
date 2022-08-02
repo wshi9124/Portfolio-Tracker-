@@ -6,7 +6,9 @@ import PropTypes from 'prop-types';
 import { getStockPrice } from '../libs/StockAPI';
 import { currencyFormat } from '../libs/Util';
 
-function BuyStockModal({ stockSymbol, companyName, didBoughtStock }) {
+function BuyStockModal({
+  stockSymbol, companyName, didBoughtStock, didSellStock, isSellModal,
+}) {
   const [open, setOpen] = useState(false);
   const [buyDisabled, setBuyDisabled] = useState(true);
   const [quantity, setQuantity] = useState(0);
@@ -45,22 +47,46 @@ function BuyStockModal({ stockSymbol, companyName, didBoughtStock }) {
 
   const onQuantityChange = (e) => {
     setQuantity(e.target.value);
-    const totalCost = e.target.value * priceInfo.currentPrice;
-    if (totalCost > cashBalance) {
-      setErrorMessage('Not enough money!');
-      setBuyDisabled(true);
+    if (isSellModal) {
+      if (e.target.value > currentOwnedStock.shares) {
+        setErrorMessage('Not enough share!');
+        setBuyDisabled(true);
+      } else {
+        setErrorMessage('');
+        setBuyDisabled(false);
+      }
     } else {
-      setErrorMessage('');
-      setBuyDisabled(false);
+      const totalCost = e.target.value * priceInfo.currentPrice;
+      if (totalCost > cashBalance) {
+        setErrorMessage('Not enough money!');
+        setBuyDisabled(true);
+      } else {
+        setErrorMessage('');
+        setBuyDisabled(false);
+      }
     }
   };
 
   const buyStockAction = () => {
-    if (currentOwnedStock !== null) {
+    const remainingStock = parseFloat(currentOwnedStock.shares) - parseFloat(quantity);
+    if (isSellModal && remainingStock === 0) {
+      fetch(`http://localhost:6001/portfolio/${currentOwnedStock.id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      })
+        .then((response) => response.json())
+        .then(() => {
+          currentOwnedStock.shares = 0;
+          didSellStock(currentOwnedStock);
+        });
+    } else if (currentOwnedStock !== null) {
+      const shares = isSellModal ? parseFloat(currentOwnedStock.shares) - parseFloat(quantity) : parseFloat(quantity) + parseFloat(currentOwnedStock.shares);
       fetch(`http://localhost:6001/portfolio/${currentOwnedStock.id}`, {
         method: 'PATCH',
         body: JSON.stringify({
-          shares: parseFloat(quantity) + parseFloat(currentOwnedStock.shares),
+          shares,
         }),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
@@ -83,9 +109,10 @@ function BuyStockModal({ stockSymbol, companyName, didBoughtStock }) {
         .then((response) => response.json())
         .then(didBoughtStock);
     }
+    const newCashBalance = isSellModal ? (cashBalance + parseFloat(quantity * priceInfo.currentPrice)) : (cashBalance - parseFloat(quantity * priceInfo.currentPrice));
     fetch('http://localhost:6001/personalinfo/1', {
       method: 'PATCH',
-      body: JSON.stringify({ cashBalance: (cashBalance - parseFloat(quantity * priceInfo.currentPrice)) }),
+      body: JSON.stringify({ cashBalance: newCashBalance }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
@@ -97,7 +124,7 @@ function BuyStockModal({ stockSymbol, companyName, didBoughtStock }) {
     <Modal
       closeIcon
       open={open}
-      trigger={<Button primary style={{ backgroundColor: 'green' }}>Buy</Button>}
+      trigger={<Button primary style={{ backgroundColor: 'green' }}>{isSellModal ? 'Sell' : 'Buy'}</Button>}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
     >
@@ -108,7 +135,10 @@ function BuyStockModal({ stockSymbol, companyName, didBoughtStock }) {
           {' '}
           {stockSymbol}
           {' '}
-          would you like to buy?
+          would you like to
+          {' '}
+          {isSellModal ? 'sell' : 'buy'}
+          ?
         </Header>
         <Header as="h5">
           Available balance:
@@ -159,8 +189,8 @@ function BuyStockModal({ stockSymbol, companyName, didBoughtStock }) {
         <Button color="grey" onClick={() => setOpen(false)}>
           Cancel
         </Button>
-        <Button disabled={buyDisabled} color="green" onClick={buyStockAction}>
-          Buy!
+        <Button disabled={buyDisabled} color={isSellModal ? 'red' : 'green'} onClick={buyStockAction}>
+          {isSellModal ? 'Sell!' : 'Buy!'}
         </Button>
       </Modal.Actions>
     </Modal>
@@ -170,11 +200,15 @@ function BuyStockModal({ stockSymbol, companyName, didBoughtStock }) {
 BuyStockModal.propTypes = {
   stockSymbol: PropTypes.string.isRequired,
   companyName: PropTypes.string.isRequired,
+  isSellModal: PropTypes.bool,
   didBoughtStock: PropTypes.func,
+  didSellStock: PropTypes.func,
 };
 
 BuyStockModal.defaultProps = {
   didBoughtStock: () => { },
+  didSellStock: () => { },
+  isSellModal: false,
 };
 
 export default BuyStockModal;

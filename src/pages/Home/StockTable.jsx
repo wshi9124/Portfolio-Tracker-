@@ -77,7 +77,8 @@ function StockTable({ assetList, setAssetList, stockPriceDict }) {
               <Table.Cell>{stockPriceDict[asset.symbol] ? currencyFormat((stockPriceDict[asset.symbol] * asset.shares)) : 'N/A'}</Table.Cell>
               <Table.Cell><BuyStockModal stockSymbol={asset.symbol} didBoughtStock={didBoughtStock} companyName={asset.companyName} /></Table.Cell>
               <Table.Cell>
-                <SellStockModal stockSymbol={asset.symbol ?? ''} didSellStock={didSellStock} companyName={asset.companyName ?? ''} />
+                <BuyStockModal stockSymbol={asset.symbol} didSellStock={didSellStock} companyName={asset.companyName} isSellModal={true} />
+                {/* <SellStockModal stockSymbol={asset.symbol ?? ''} didSellStock={didSellStock} companyName={asset.companyName ?? ''} /> */}
                 {' '}
               </Table.Cell>
             </Table.Row>
