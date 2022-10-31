@@ -13,7 +13,6 @@ There is also a line graph that tracks the total balance history. However, since
 <img width="700" alt="Screen Shot 2022-10-31 at 1 15 12 PM" src="https://user-images.githubusercontent.com/104730743/199075182-af3b80b1-470b-4735-8855-91d4d0892dee.png">
 
 On the bottom of the home page, users can see the cash balance remaining to buy stocks. They can also see their current holdings in more detail (name, shares, price, percentage, and total). Users can also sort their holdings by ticker and price. 
-######
 Finally, users can buy or sell the stocks they currently own. 
 
 <img width="700" alt="Screen Shot 2022-10-31 at 1 15 31 PM" src="https://user-images.githubusercontent.com/104730743/199075212-1b89f548-59d8-4e81-a2d0-8ecded95af58.png">
