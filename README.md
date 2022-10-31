@@ -1,5 +1,8 @@
-#Welcome to Portfolio Tracker! 
-###This app provides you with Real-time view of your holdings. It also gives you the tools to monitor and manage your investment effectively. 
+# Portfolio Tracker
+
+# Technologies
+ React, Javascript, HTML, CSS, Semantic UI, Finnhub Stock API  
+ 
 
 ####Features for Home Page:
 ######
