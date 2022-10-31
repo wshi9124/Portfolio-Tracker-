@@ -53,7 +53,7 @@ Has a toggle dark mode
 <img width="500" alt="Screen Shot 2022-10-31 at 1 17 00 PM" src="https://user-images.githubusercontent.com/104730743/199075416-21402b0b-0a91-4a81-ab14-75ac214dd142.png">
 
 
-### Setup
+#Setup
 Run npm install in your terminal.
 ##
 Run npm run server
