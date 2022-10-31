@@ -2,17 +2,107 @@
   "personalinfo": [
     {
       "id": 1,
-      "firstName": "",
-      "lasttName": "",
-      "cashBalance": 0,
-      "address": "",
-      "phone": "",
-      "emailAddress": ""
+      "firstName": "john",
+      "lasttName": "doe",
+      "cashBalance": 73970.75,
+      "address": "123 ",
+      "phone": "2134",
+      "emailAddress": "abc@gmail.com"
     }
   ],
-  "portfolio": [],
-  "transactions": [],
-  "watchlist": [],
+  "portfolio": [
+    {
+      "symbol": "AAPL",
+      "companyName": "Apple Inc.",
+      "shares": 15,
+      "id": 1
+    },
+    {
+      "symbol": "AMZN",
+      "companyName": "Amazon.com, Inc.",
+      "shares": 15,
+      "id": 2
+    },
+    {
+      "symbol": "NFLX",
+      "companyName": "Netflix, Inc.",
+      "shares": 20,
+      "id": 3
+    },
+    {
+      "symbol": "MSFT",
+      "companyName": "Microsoft Corporation",
+      "shares": 6,
+      "id": 4
+    }
+  ],
+  "transactions": [
+    {
+      "selectBank": "Bank of America",
+      "amount": "10000",
+      "timeStamp": 1667235827111,
+      "id": 1
+    },
+    {
+      "selectBank": "Wells Fargo",
+      "amount": "20000",
+      "timeStamp": 1667235839303,
+      "id": 2
+    },
+    {
+      "selectBank": "Chase",
+      "amount": "55000",
+      "timeStamp": 1667235849417,
+      "id": 3
+    }
+  ],
+  "watchlist": [
+    {
+      "symbol": "ADBE",
+      "companyName": "Adobe Inc.",
+      "id": 4
+    },
+    {
+      "symbol": "ADP",
+      "companyName": "Automatic Data Processing, Inc.",
+      "id": 5
+    },
+    {
+      "symbol": "AMAT",
+      "companyName": "Applied Materials, Inc.",
+      "id": 7
+    },
+    {
+      "symbol": "BIIB",
+      "companyName": "Biogen Inc.",
+      "id": 9
+    },
+    {
+      "symbol": "AAPL",
+      "companyName": "Apple Inc.",
+      "id": 10
+    },
+    {
+      "symbol": "AMZN",
+      "companyName": "Amazon.com, Inc.",
+      "id": 11
+    },
+    {
+      "symbol": "NFLX",
+      "companyName": "Netflix, Inc.",
+      "id": 12
+    },
+    {
+      "symbol": "SBUX",
+      "companyName": "Starbucks Corporation",
+      "id": 13
+    },
+    {
+      "symbol": "MSFT",
+      "companyName": "Microsoft Corporation",
+      "id": 14
+    }
+  ],
   "topList": [
     {
       "symbol": "AAPL",

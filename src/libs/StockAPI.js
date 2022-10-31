@@ -1,6 +1,6 @@
-const API_KEY = process.env.REACT_APP_STOCK_API_KEY_SANDBOX; /* eslint-disable-line no-unused-vars */
+const API_KEY = process.env.REACT_APP_STOCK_API_KEY_PROD; /* eslint-disable-line no-unused-vars */
 
-const useFakeData = true;
+const useFakeData = false;
 
 export const searchStock = (stockTicker, onComplete) => {
   const url = useFakeData ? 'http://localhost:6002/search' : `https://finnhub.io/api/v1/search?q=${stockTicker}&token=${API_KEY}`;
@@ -35,7 +35,7 @@ export const getStockPrice = (stockTicker, onComplete) => {
 };
 
 export const getStockNews = (stockTicker, onComplete) => {
-  const url = useFakeData ? 'http://localhost:6002/news' : `https://finnhub.io/api/v1/company-news?symbol=${stockTicker}&from=2022-07-09&to=2022-07-15&token=${process.env.REACT_APP_STOCK_API_KEY_PROD}`;
+  const url = useFakeData ? 'http://localhost:6002/news' : `https://finnhub.io/api/v1/company-news?symbol=${stockTicker}&from=2022-10-25&to=${new Date().toISOString().split('T')[0]}&token=${API_KEY}`;
 
   fetch(url)
     .then((response) => response.json())

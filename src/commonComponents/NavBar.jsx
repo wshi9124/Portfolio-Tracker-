@@ -36,14 +36,6 @@ function NavBar() {
           navigate('/settings', { replace: true });
         }}
       />
-      <Menu.Menu position="right">
-        <Menu.Item
-          name="logout"
-          onClick={() => {
-
-          }}
-        />
-      </Menu.Menu>
     </Menu>
   );
 }
