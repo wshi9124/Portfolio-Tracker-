@@ -35,7 +35,9 @@ Shows the top 100 stocks in alphabetical order
 ######
 Can search for stocks by Ticker and Name if the API server is turned on
 
-On the watchlist page, 
+On the watchlist page, users can add stocks to their watchlist in 2 ways. The first way is to find it in the top 100 stocks section. This section is divided into 10 stocks per page using pagination. The second way is to search for the stock by ticker in the search bar. 
+######
+When users click on a stock on the watchlist, it will display the top 10 most recent news for that stock. Users can also choose to buy that stock or remove it from thr watchlist.  
 
 <img width="700" alt="Screen Shot 2022-10-31 at 1 15 56 PM" src="https://user-images.githubusercontent.com/104730743/199075288-878c9fae-9c2c-4fbf-9735-f5d7cf2a387a.png">
 
