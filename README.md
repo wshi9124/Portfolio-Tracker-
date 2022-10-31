@@ -35,14 +35,10 @@ On the transfer page, users can add money to their cash balance. When a user sub
 
 <img width="700" alt="Screen Shot 2022-10-31 at 1 16 08 PM" src="https://user-images.githubusercontent.com/104730743/199075383-be1aef52-0914-45a5-9375-bdadcd801ec2.png">
 
-####Features for Settings Page:
-######
-Can change profile settings that will persist
-######
-Has a toggle dark mode  
-
+On the settings page, users can update their personal information. There is also a toggle dark mode if users want a different view.
 <img width="700" alt="Screen Shot 2022-10-31 at 1 16 23 PM" src="https://user-images.githubusercontent.com/104730743/199075403-e23ec71e-8f84-4c9d-bdf8-dfa95006f616.png">
 
+Here is an example of a page that in dark mode. 
 <img width="700" alt="Screen Shot 2022-10-31 at 1 17 00 PM" src="https://user-images.githubusercontent.com/104730743/199075416-21402b0b-0a91-4a81-ab14-75ac214dd142.png">
 
 
