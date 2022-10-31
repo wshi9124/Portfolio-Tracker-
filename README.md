@@ -15,6 +15,8 @@ Can buy or sell stocks on the stock table like any usual trading platforms
 ######
 Can sort holdings by Ticker and price
 
+On the top of the home page, there is a donut chart that displays all your stock holdings. 
+
 <img width="700" alt="Screen Shot 2022-10-31 at 1 15 12 PM" src="https://user-images.githubusercontent.com/104730743/199075182-af3b80b1-470b-4735-8855-91d4d0892dee.png">
 
 <img width="700" alt="Screen Shot 2022-10-31 at 1 15 31 PM" src="https://user-images.githubusercontent.com/104730743/199075212-1b89f548-59d8-4e81-a2d0-8ecded95af58.png">
