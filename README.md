@@ -33,7 +33,7 @@ Shows the top 100 stocks in alphabetical order
 ######
 Can search for stocks by Ticker and Name if the API server is turned on
 
-<img width="500" alt="Screen Shot 2022-10-31 at 1 15 56 PM" src="https://user-images.githubusercontent.com/104730743/199075288-878c9fae-9c2c-4fbf-9735-f5d7cf2a387a.png">
+<img width="700" alt="Screen Shot 2022-10-31 at 1 15 56 PM" src="https://user-images.githubusercontent.com/104730743/199075288-878c9fae-9c2c-4fbf-9735-f5d7cf2a387a.png">
 
 
 ####Features for Transfer Page:
