@@ -46,7 +46,7 @@ function SellStockModal({ stockSymbol, companyName, didSellStock }) {
   const onQuantityChange = (e) => {
     setQuantity(e.target.value);
     if (e.target.value > currentOwnedStock.shares) {
-      setErrorMessage('Not enough share!');
+      setErrorMessage('Not enough shares!');
       setBuyDisabled(true);
     } else {
       setErrorMessage('');
