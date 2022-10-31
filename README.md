@@ -19,9 +19,9 @@ Can sort holdings by Ticker and price
 
 <img width="500" alt="Screen Shot 2022-10-31 at 1 15 31 PM" src="https://user-images.githubusercontent.com/104730743/199075212-1b89f548-59d8-4e81-a2d0-8ecded95af58.png">
 
-<img width="1728" alt="Screen Shot 2022-10-31 at 1 52 24 PM" src="https://user-images.githubusercontent.com/104730743/199076607-cdd789b8-310a-4bcb-babc-c43e9508e953.png">
+<img width="500" alt="Screen Shot 2022-10-31 at 1 52 24 PM" src="https://user-images.githubusercontent.com/104730743/199076607-cdd789b8-310a-4bcb-babc-c43e9508e953.png">
 
-<img width="1728" alt="Screen Shot 2022-10-31 at 1 55 06 PM" src="https://user-images.githubusercontent.com/104730743/199076626-a29b4ce4-8a01-447b-b13c-a83870de95e2.png">
+<img width="500" alt="Screen Shot 2022-10-31 at 1 55 06 PM" src="https://user-images.githubusercontent.com/104730743/199076626-a29b4ce4-8a01-447b-b13c-a83870de95e2.png">
 
 ####Features for Watchlist Page:
 ######
