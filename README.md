@@ -1,5 +1,5 @@
 # Portfolio Tracker
-Portfolio Tracker is a financial tool where users can search, organize, and research their personal stock holdings. 
+Portfolio Tracker is a trading platform simulator where users can search, organize, and research their personal stock holdings. 
 
 # Technologies
  React, Javascript, HTML, CSS, Semantic UI, Finnhub Stock API  
