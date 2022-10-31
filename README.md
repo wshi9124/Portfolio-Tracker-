@@ -31,18 +31,15 @@ When users click on a stock on the watchlist, it will display the top 10 most re
 
 <img width="700" alt="Screen Shot 2022-10-31 at 1 15 56 PM" src="https://user-images.githubusercontent.com/104730743/199075288-878c9fae-9c2c-4fbf-9735-f5d7cf2a387a.png">
 
+On the transfer page, users can add money to their cash balance. When a user submits a request, the updated information will be shown on the recent transaction history with the most recent transaction on top. 
 
-####Features for Transfer Page:
-######
-Mocks cash transfers to the account and records it in real time
+<img width="700" alt="Screen Shot 2022-10-31 at 1 16 08 PM" src="https://user-images.githubusercontent.com/104730743/199075383-be1aef52-0914-45a5-9375-bdadcd801ec2.png">
 
 ####Features for Settings Page:
 ######
 Can change profile settings that will persist
 ######
 Has a toggle dark mode  
-
-<img width="700" alt="Screen Shot 2022-10-31 at 1 16 08 PM" src="https://user-images.githubusercontent.com/104730743/199075383-be1aef52-0914-45a5-9375-bdadcd801ec2.png">
 
 <img width="700" alt="Screen Shot 2022-10-31 at 1 16 23 PM" src="https://user-images.githubusercontent.com/104730743/199075403-e23ec71e-8f84-4c9d-bdf8-dfa95006f616.png">
 
